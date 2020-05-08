@@ -27,4 +27,9 @@
     <string name="lista_de_ingresos">Lista de ingresos</string>
     <string name="concepto">Concepto</string>
     <string name="estado">Estado</string>
+    <string name="concepto_ingreso">Concepto del ingreso</string>
+    <string name="cantidad_monto">Cantidad en dls</string>
+    <string name="monto">Monto</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="agregar">AGREGAR</string>
 </resources>

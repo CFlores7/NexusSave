@@ -16,7 +16,7 @@
     <style name="spinner_paises">
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:background">#1c185e</item>
+        <item name="android:background">#99BBCE</item>
     </style>
 
 </resources>

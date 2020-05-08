@@ -36,7 +36,7 @@
             app:layout_constraintStart_toEndOf="@+id/tvConcepto" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddIngreso"
+            android:id="@+id/fabAddPago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
@@ -50,7 +50,7 @@
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/fabAddIngreso"
+            app:layout_constraintBottom_toTopOf="@+id/fabAddPago"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

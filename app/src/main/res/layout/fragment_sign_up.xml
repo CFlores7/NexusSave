@@ -228,19 +228,19 @@
         android:layout_marginBottom="@dimen/margin_narrow"
         android:text="@string/bt_cancelar"
         android:textColor="@color/colorTextPrimary"
-        android:background="@drawable/button_cancelar"
+        android:background="@drawable/button_registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvFechadeN" />
 
     <Button
         android:id="@+id/btnCrear"
-        android:layout_width="110dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_narrow"
         android:text="@string/bt_crear"
         android:background="@drawable/button_ingresar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etFechaNaci" />
+        app:layout_constraintEnd_toEndOf="@+id/etFechaNaci"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
