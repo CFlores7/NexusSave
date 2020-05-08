@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">NexusSave</string>
+    <string name="app_frase">Organiza tus gastos, ingresos, y pagos de la mejor manera.</string>
+    <string name="tv_correo">Correo:</string>
+    <string name="et_correo">example@email.com</string>
+    <string name="tv_pass">Contraseña:</string>
+    <string name="et_pass">••••••••</string>
+    <string name="bt_registrarse">REGISTRARSE</string>
+    <string name="bt_ingresar">INGRESAR</string>
+    <string name="tv_registrarse">Registrarse</string>
+    <string name="tv_nombre">Nombre:</string>
+    <string name="tv_confpass">Repita contraseña:</string>
+    <string name="tv_ciudad">Ciudad:</string>
+    <string name="tv_pais">Pais:</string>
+    <string name="tv_fechadenaci">Fecha de nacimiento:</string>
+    <string name="et_nombre">Nombre y Apellido</string>
+    <string name="et_ciudad">Santa Ana</string>
+    <string name="bt_cancelar">CANCELAR</string>
+    <string name="bt_crear">CREAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="iv_user">user</string>
+    <string name="saldo">Saldo Disponible</string>
+    <string name="dollar_sign">$</string>
+    <string name="dinero_default">00.00</string>
+</resources>
