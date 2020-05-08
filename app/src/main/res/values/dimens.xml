@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_narrow">16dp</dimen>
     <dimen name="marginTopText">24dp</dimen>
+    <dimen name="margin_wide">24dp</dimen>
 </resources>

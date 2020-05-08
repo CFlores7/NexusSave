@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name = "country_array">
+    <string-array name="country_array">
         <item> Afganistán </item>
         <item> Albania </item>
-        <item> Argelia </item>
-        <item> Samoa Americana </item>
+        <item> Alemania </item>
         <item> Andorra </item>
         <item> Angola </item>
         <item> Anguila </item>
         <item> Antártida </item>
+        <item> Antigua República Yugoslava de Macedonia </item>
         <item> Antigua y Barbuda </item>
+        <item> Antillas Holandesas </item>
+        <item> Arabia Saudita </item>
+        <item> Argelia </item>
         <item> Argentina </item>
         <item> Armenia </item>
         <item> Aruba </item>
@@ -19,91 +22,99 @@
         <item> Bahrein </item>
         <item> Bangladesh </item>
         <item> Barbados </item>
-        <item> Bielorrusia </item>
         <item> Bélgica </item>
         <item> Belice </item>
         <item> Benin </item>
         <item> Bermudas </item>
-        <item> Bután </item>
+        <item> Bielorrusia </item>
         <item> Bolivia </item>
         <item> Bosnia y Herzegovina </item>
         <item> Botswana </item>
-        <item> Isla Bouvet </item>
         <item> Brasil </item>
-        <item> Territorio Británico del Océano Índico </item>
-        <item> Islas Vírgenes Británicas </item>
         <item> Brunei </item>
         <item> Bulgaria </item>
         <item> Burkina Faso </item>
         <item> Burundi </item>
+        <item> Bután </item>
+        <item> Cabo Verde </item>
         <item> Camboya </item>
         <item> Camerún </item>
         <item> Canadá </item>
-        <item> Cabo Verde </item>
-        <item> Islas Caimán </item>
-        <item> República Centroafricana </item>
         <item> Chad </item>
         <item> Chile </item>
         <item> China </item>
-        <item> Isla de Navidad </item>
-        <item> Islas Cocos (Keeling) </item>
+        <item> Chipre </item>
+        <item> Ciudad del Vaticano </item>
         <item> Colombia </item>
         <item> Comoras </item>
         <item> Congo </item>
-        <item> Islas Cook </item>
-        <item> Costa Rica </item>
+        <item> Corea del Norte </item>
+        <item> Corea del Sur </item>
         <item> Costa de Marfil </item>
+        <item> Costa Rica </item>
         <item> Croacia </item>
         <item> Cuba </item>
-        <item> Chipre </item>
-        <item> República Checa </item>
-        <item> República Democrática del Congo </item>
         <item> Dinamarca </item>
         <item> Djibouti </item>
         <item> Dominica </item>
-        <item> República Dominicana </item>
-        <item> Timor Oriental </item>
         <item> Ecuador </item>
         <item> Egipto </item>
         <item> El Salvador </item>
-        <item> Guinea Ecuatorial </item>
+        <item> Emiratos Árabes Unidos </item>
         <item> Eritrea </item>
+        <item> Eslovaquia </item>
+        <item> Eslovenia </item>
+        <item> España </item>
+        <item> Estados Unidos </item>
         <item> Estonia </item>
         <item> Etiopía </item>
-        <item> Islas Feroe </item>
-        <item> Islas Malvinas </item>
         <item> Fiji </item>
+        <item> Filipinas </item>
         <item> Finlandia </item>
-        <item> Antigua República Yugoslava de Macedonia </item>
         <item> Francia </item>
-        <item> Guayana Francesa </item>
-        <item> Polinesia Francesa </item>
-        <item> Territorios Australes Franceses </item>
         <item> Gabón </item>
+        <item> Gambia </item>
         <item> Georgia </item>
-        <item> Alemania </item>
         <item> Ghana </item>
         <item> Gibraltar </item>
+        <item> Granada </item>
         <item> Grecia </item>
         <item> Groenlandia </item>
-        <item> Granada </item>
         <item> Guadalupe </item>
         <item> Guam </item>
         <item> Guatemala </item>
+        <item> Guayana Francesa </item>
         <item> Guinea </item>
+        <item> Guinea Ecuatorial </item>
         <item> Guinea-Bissau </item>
         <item> Guyana </item>
         <item> Haití </item>
-        <item> Islas Heard y McDonald </item>
         <item> Honduras </item>
         <item> Hong Kong </item>
         <item> Hungría </item>
-        <item> Islandia </item>
         <item> India </item>
         <item> Indonesia </item>
         <item> Irán </item>
         <item> Iraq </item>
         <item> Irlanda </item>
+        <item> Isla Bouvet </item>
+        <item> Isla de Navidad </item>
+        <item> Isla Norfolk </item>
+        <item> Islandia </item>
+        <item> Islas Caimán </item>
+        <item> Islas Cocos (Keeling) </item>
+        <item> Islas Cook </item>
+        <item> Islas Feroe </item>
+        <item> Islas Georgia del Sur y Sandwich del Sur </item>
+        <item> Islas Heard y McDonald </item>
+        <item> Islas Malvinas </item>
+        <item> Islas Marshall </item>
+        <item> Islas Pitcairn </item>
+        <item> Islas Salomón </item>
+        <item> Islas Turcas y Caicos </item>
+        <item> Islas ultramarinas de Estados Unidos </item>
+        <item> Islas Vírgenes </item>
+        <item> Islas Vírgenes Británicas </item>
         <item> Israel </item>
         <item> Italia </item>
         <item> Jamaica </item>
@@ -111,13 +122,14 @@
         <item> Jordan </item>
         <item> Kazajstán </item>
         <item> Kenia </item>
+        <item> Kirguistán </item>
         <item> Kiribati </item>
         <item> Kuwait </item>
-        <item> Kirguistán </item>
         <item> Laos </item>
+        <item> Las Bahamas </item>
+        <item> Lesotho </item>
         <item> Letonia </item>
         <item> Líbano </item>
-        <item> Lesotho </item>
         <item> Liberia </item>
         <item> Libia </item>
         <item> Liechtenstein </item>
@@ -125,15 +137,16 @@
         <item> Luxemburgo </item>
         <item> Macao </item>
         <item> Madagascar </item>
-        <item> Malawi </item>
         <item> Malasia </item>
+        <item> Malawi </item>
         <item> Maldivas </item>
         <item> Mali </item>
         <item> Malta </item>
-        <item> Islas Marshall </item>
+        <item> Marianas del Norte </item>
+        <item> Marruecos </item>
         <item> Martinica </item>
-        <item> Mauritania </item>
         <item> Mauricio </item>
+        <item> Mauritania </item>
         <item> Mayotte </item>
         <item> México </item>
         <item> Micronesia </item>
@@ -142,102 +155,89 @@
         <item> Mongolia </item>
         <item> Montenegro </item>
         <item> Montserrat </item>
-        <item> Marruecos </item>
         <item> Mozambique </item>
         <item> Myanmar </item>
         <item> Namibia </item>
         <item> Nauru </item>
         <item> Nepal </item>
-        <item> Países Bajos </item>
-        <item> Antillas Holandesas </item>
-        <item> Nueva Caledonia </item>
-        <item> Nueva Zelanda </item>
         <item> Nicaragua </item>
         <item> Níger </item>
         <item> Nigeria </item>
         <item> Niue </item>
-        <item> Isla Norfolk </item>
-        <item> Corea del Norte </item>
-        <item> Marianas del Norte </item>
         <item> Noruega </item>
+        <item> Nueva Caledonia </item>
+        <item> Nueva Zelanda </item>
         <item> Omán </item>
+        <item> Países Bajos </item>
         <item> Pakistán </item>
         <item> Palau </item>
         <item> Panamá </item>
         <item> Papua Nueva Guinea </item>
         <item> Paraguay </item>
         <item> Perú </item>
-        <item> Filipinas </item>
-        <item> Islas Pitcairn </item>
+        <item> Polinesia Francesa </item>
         <item> Polonia </item>
         <item> Portugal </item>
         <item> Puerto Rico </item>
         <item> Qatar </item>
+        <item> Reino Unido </item>
+        <item> República Centroafricana </item>
+        <item> República Checa </item>
+        <item> República Democrática del Congo </item>
+        <item> República Dominicana </item>
         <item> Reunión </item>
+        <item> Ruanda </item>
         <item> Rumania </item>
         <item> Rusia </item>
-        <item> Ruanda </item>
-        <item> Tomo cuadrado y Príncipe </item>
-        <item> Santa Elena </item>
+        <item> Sáhara Occidental </item>
+        <item> Samoa </item>
+        <item> Samoa Americana </item>
         <item> San Cristóbal y Nieves </item>
-        <item> Santa Lucía </item>
+        <item> San Marino </item>
         <item> San Pedro y Miquelón </item>
         <item> San Vicente y las Granadinas </item>
-        <item> Samoa </item>
-        <item> San Marino </item>
-        <item> Arabia Saudita </item>
+        <item> Santa Elena </item>
+        <item> Santa Lucía </item>
         <item> Senegal </item>
         <item> Serbia </item>
         <item> Seychelles </item>
         <item> Sierra Leona </item>
         <item> Singapur </item>
-        <item> Eslovaquia </item>
-        <item> Eslovenia </item>
-        <item> Islas Salomón </item>
+        <item> Siria </item>
         <item> Somalia </item>
-        <item> Sudáfrica </item>
-        <item> Islas Georgia del Sur y Sandwich del Sur </item>
-        <item> Corea del Sur </item>
-        <item> Sudán del Sur </item>
-        <item> España </item>
         <item> Sri Lanka </item>
+        <item> Sudáfrica </item>
         <item> Sudán </item>
+        <item> Sudán del Sur </item>
+        <item> Suecia </item>
+        <item> Suiza </item>
         <item> Surinam </item>
         <item> Svalbard y Jan Mayen </item>
         <item> Swazilandia </item>
-        <item> Suecia </item>
-        <item> Suiza </item>
-        <item> Siria </item>
-        <item> Taiwán </item>
-        <item> Tayikistán </item>
-        <item> Tanzania </item>
         <item> Tailandia </item>
-        <item> Las Bahamas </item>
-        <item> Gambia </item>
+        <item> Taiwán </item>
+        <item> Tanzania </item>
+        <item> Tayikistán </item>
+        <item> Territorio Británico del Océano Índico </item>
+        <item> Territorios Australes Franceses </item>
+        <item> Timor Oriental </item>
         <item> Togo </item>
         <item> Tokelau </item>
+        <item> Tomo cuadrado y Príncipe </item>
         <item> Tonga </item>
         <item> Trinidad y Tobago </item>
         <item> Túnez </item>
-        <item> Turquía </item>
         <item> Turkmenistán </item>
-        <item> Islas Turcas y Caicos </item>
+        <item> Turquía </item>
         <item> Tuvalu </item>
-        <item> Islas Vírgenes </item>
-        <item> Uganda </item>
         <item> Ucrania </item>
-        <item> Emiratos Árabes Unidos </item>
-        <item> Reino Unido </item>
-        <item> Estados Unidos </item>
-        <item> Islas ultramarinas de Estados Unidos </item>
+        <item> Uganda </item>
         <item> Uruguay </item>
         <item> Uzbekistán </item>
         <item> Vanuatu </item>
-        <item> Ciudad del Vaticano </item>
         <item> Venezuela </item>
         <item> Vietnam </item>
         <item> Wallis y Futuna </item>
-        <item> Sáhara Occidental </item>
         <item> Yemen </item>
         <item> Yugoslavia </item>
         <item> Zambia </item>

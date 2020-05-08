@@ -25,4 +25,6 @@
     <string name="dollar_sign">$</string>
     <string name="dinero_default">00.00</string>
     <string name="lista_de_ingresos">Lista de ingresos</string>
+    <string name="concepto">Concepto</string>
+    <string name="estado">Estado</string>
 </resources>

@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import com.example.proyecto.databinding.FragmentSignUpBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -21,6 +23,10 @@ class SignUpFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentSignUpBinding>(inflater,
             R.layout.fragment_sign_up, container, false)
+
+        //Pais Seleccionado Default -> El Salvador
+        binding.spPais.setSelection(58)
+
 
 
         return binding.root
