@@ -7,4 +7,5 @@
     <color name="colorLogIn">#262176</color>
     <color name="colorSignUp">#99BBCE</color>
     <color name="colorHome">#D1E6FF</color>
+    <color name="colorTextBlack">#000000</color>
 </resources>
