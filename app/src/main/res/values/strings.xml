@@ -32,4 +32,8 @@
     <string name="monto">Monto</string>
     <string name="cancelar">CANCELAR</string>
     <string name="agregar">AGREGAR</string>
+    <string name="concepto_pago">Escriba el concepto de la factura</string>
+    <string name="cantidad_pago">Cantidad pendiente de pago</string>
+    <string name="bt_fecha">FECHA</string>
+    <string name="etFecha">dd/mm/aa</string>
 </resources>

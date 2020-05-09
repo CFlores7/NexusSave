@@ -210,7 +210,7 @@
         android:layout_marginStart="@dimen/margin_narrow"
         android:layout_marginEnd="@dimen/margin_narrow"
         android:ems="10"
-        android:hint="dd/mm/aa"
+        android:hint="@string/etFecha"
         android:inputType="date"
         android:scrollbarSize="20sp"
         android:textAlignment="center"
