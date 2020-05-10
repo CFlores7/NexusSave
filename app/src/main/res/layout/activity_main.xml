@@ -11,8 +11,8 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.proyecto.NuevoPagoFragment"
+        android:name="com.example.proyecto.SignUpFragment"
         android:id="@+id/ingresosFragment"
-        tools:layout="@layout/fragment_nuevo_pago"/>
+        tools:layout="@layout/fragment_sign_up"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

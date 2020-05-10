@@ -35,5 +35,7 @@
     <string name="concepto_pago">Escriba el concepto de la factura</string>
     <string name="cantidad_pago">Cantidad pendiente de pago</string>
     <string name="bt_fecha">FECHA</string>
-    <string name="etFecha">dd/mm/aa</string>
+    <string name="etFecha">dd/mm/aaaa</string>
+    <string name="fechaGasto">Fecha del gasto realizado</string>
+    <string name="conceptoGasto">Escriba aqui...</string>
 </resources>
