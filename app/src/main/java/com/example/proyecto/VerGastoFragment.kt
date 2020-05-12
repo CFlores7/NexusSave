@@ -9,20 +9,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import com.example.proyecto.databinding.FragmentVerIngresoBinding
+import com.example.proyecto.databinding.FragmentVerGastoBinding
 import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
-class VerIngresoFragment : Fragment() {
+class VerGastoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentVerIngresoBinding>(inflater,
-            R.layout.fragment_ver_ingreso, container, false)
+        val binding = DataBindingUtil.inflate<FragmentVerGastoBinding>(inflater,
+            R.layout.fragment_ver_gasto, container, false)
 
         centerTitle()
 
@@ -32,7 +32,7 @@ class VerIngresoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "INGRESO"
+        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
     }
     //Centrar texto en ActionBar
     private fun centerTitle() {
