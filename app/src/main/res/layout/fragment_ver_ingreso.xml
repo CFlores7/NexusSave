@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".VerIngresoFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvConcepto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_wide"
+        android:layout_marginTop="@dimen/margin_narrow"
+        android:layout_marginBottom="@dimen/margin_narrow"
+        android:text="@string/concepto"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <TextView
+        android:id="@+id/tvCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_wide"
+        android:text="@string/cantidad"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@+id/tvConcepto"
+        app:layout_constraintTop_toBottomOf="@+id/tvConcepto" />
+
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_wide"
+        android:text="@string/fecha"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@+id/tvCantidad"
+        app:layout_constraintTop_toBottomOf="@+id/tvCantidad" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_narrow"
+        android:layout_marginBottom="@dimen/margin_narrow"
+        android:background="@drawable/button_regresar"
+        android:text="@string/regresar"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_narrow"
+        android:background="@drawable/button_cancelar"
+        android:text="@string/borrar"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvConceptoIngreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_narrow"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="26sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvConcepto"
+        app:layout_constraintStart_toEndOf="@+id/tvConcepto" />
+
+    <TextView
+        android:id="@+id/tvCantidadIngreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_narrow"
+        android:textColor="@color/colorGreen"
+        android:textSize="26sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvCantidad"
+        app:layout_constraintStart_toEndOf="@+id/tvCantidad" />
+
+    <TextView
+        android:id="@+id/tvFechaIngreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_narrow"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="26sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvFecha"
+        app:layout_constraintStart_toEndOf="@+id/tvFecha" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

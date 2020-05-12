@@ -38,4 +38,8 @@
     <string name="etFecha">dd/mm/aaaa</string>
     <string name="fechaGasto">Fecha del gasto realizado</string>
     <string name="conceptoGasto">Escriba aqui...</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="fecha">Fecha</string>
+    <string name="regresar">REGRESAR</string>
+    <string name="borrar">BORRAR</string>
 </resources>

@@ -1,75 +1,36 @@
 package com.example.proyecto
 
-import android.app.DatePickerDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.CalendarViewBindingAdapter.setDate
-import com.example.proyecto.databinding.FragmentNuevoGastoBinding
-import java.util.*
+import com.example.proyecto.databinding.FragmentVerIngresoBinding
+import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
-class NuevoGastoFragment : Fragment() {
+class VerIngresoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentNuevoGastoBinding>(inflater,
-            R.layout.fragment_nuevo_gasto, container, false)
-
-        centerTitle()
-
-        Toast.makeText(this.activity,
-            "El gasto no puede registrarse si es anterior a 3 dias.",
-            Toast.LENGTH_LONG).show()
-
-        binding.btFecha.setOnClickListener {
-            chooseDate(binding.etFecha)
-        }
+        val binding = DataBindingUtil.inflate<FragmentVerIngresoBinding>(inflater,
+            R.layout.fragment_ver_ingreso, container, false)
 
         return binding.root
-    }
-    //Dialogo para elegir fecha
-    private fun chooseDate(etFecha: EditText){
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val minDay = 3*24*60*60*1000
-
-        val dpd = DatePickerDialog(
-            activity as AppCompatActivity, android.R.style.Theme_Material_Dialog_MinWidth,
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
-                // Display Selected date in textbox
-                etFecha.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
-            },
-            year,
-            month,
-            day
-        )
-        dpd.datePicker.minDate = (System.currentTimeMillis() - minDay)
-        dpd.show()
     }
     //Setting Title
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "NUEVO GASTO"
+        (activity as AppCompatActivity).supportActionBar?.title = "INGRESO"
     }
     //Centrar texto en ActionBar
     private fun centerTitle() {

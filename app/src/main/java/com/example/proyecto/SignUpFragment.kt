@@ -36,7 +36,35 @@ class SignUpFragment : Fragment() {
         //Pais Seleccionado Default -> El Salvador
         binding.spPais.setSelection(58)
 
+        binding.etFechaNaci.isFocusable = false
+        binding.etFechaNaci.setOnClickListener {
+            chooseDate(binding.etFechaNaci)
+        }
+
+
         return binding.root
+    }
+    //Dialogo para elegir fecha
+    private fun chooseDate(etFecha: EditText){
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val minDay = 3*24*60*60*1000
+
+        val dpd = DatePickerDialog(
+            activity as AppCompatActivity,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                val mes = monthOfYear+1
+                // Display Selected date in textbox
+                etFecha.setText("" + dayOfMonth + "/" + mes + "/" + year)
+            },
+            year,
+            month,
+            day
+        )
+        dpd.datePicker.maxDate = System.currentTimeMillis()
+        dpd.show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
