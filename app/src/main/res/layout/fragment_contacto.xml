@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ContactoFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorContacto"
+    >
+
+    <ImageView
+        android:id="@+id/ivTwitter"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/margin_narrow"
+        android:layout_marginEnd="@dimen/margin_narrow"
+        android:contentDescription="@string/descTwitterLogo"
+        android:src="@drawable/logo_twitter"
+        app:layout_constraintEnd_toStartOf="@+id/ivInstagram"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivFacebook"
+        app:layout_constraintTop_toTopOf="@+id/ivFacebook" />
+
+    <ImageView
+        android:id="@+id/ivFacebook"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="@dimen/margin_wide"
+        android:contentDescription="@string/descFbLogo"
+        android:src="@drawable/logo_facebook"
+        app:layout_constraintBottom_toTopOf="@+id/tvCompanyName"
+        app:layout_constraintEnd_toStartOf="@+id/ivTwitter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@+id/tvCompanyName" />
+
+    <ImageView
+        android:id="@+id/ivInstagram"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/descInstagramLogo"
+        android:src="@drawable/logo_instagram"
+        app:layout_constraintEnd_toEndOf="@+id/tvCompanyName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivTwitter"
+        app:layout_constraintTop_toTopOf="@+id/ivTwitter" />
+
+    <TextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CompanyContact"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <TextView
+        android:id="@+id/tvCopyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_narrow"
+        android:text="@string/copyright"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

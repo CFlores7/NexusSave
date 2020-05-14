@@ -45,4 +45,9 @@
     <string name="estado">Estado</string>
     <string name="cancelado">Cancelado</string>
     <string name="pendiente">Pendiente</string>
+    <string name="CompanyContact">/RoyalLockCompany</string>
+    <string name="copyright">Copyright © 2020 by RoyalLockCompany.</string>
+    <string name="descTwitterLogo">TwitterLogo</string>
+    <string name="descFbLogo">FacebookLogo</string>
+    <string name="descInstagramLogo">InstagramLogo</string>
 </resources>
