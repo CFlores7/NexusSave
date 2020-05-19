@@ -1,5 +1,6 @@
 package com.example.proyecto
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentSignUpBinding
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import java.util.*
@@ -26,10 +28,15 @@ import kotlin.collections.ArrayList
  */
 class SignUpFragment : Fragment() {
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Ocultando ActionBar
+        (activity as AppCompatActivity).supportActionBar?.hide()
+        (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
+
         val binding = DataBindingUtil.inflate<FragmentSignUpBinding>(inflater,
             R.layout.fragment_sign_up, container, false)
 
@@ -41,6 +48,14 @@ class SignUpFragment : Fragment() {
             chooseDate(binding.etFechaNaci)
         }
 
+        binding.btnCancelar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_signUpFragment_to_logInFragment)
+        }
+        binding.btnCrear.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_signUpFragment_to_logInFragment)
+        }
 
         return binding.root
     }
@@ -65,12 +80,5 @@ class SignUpFragment : Fragment() {
         )
         dpd.datePicker.maxDate = System.currentTimeMillis()
         dpd.show()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        //Ocultando ActionBar
-        (activity as AppCompatActivity).supportActionBar?.hide()
     }
 }

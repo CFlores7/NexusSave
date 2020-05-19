@@ -50,4 +50,10 @@
     <string name="descTwitterLogo">TwitterLogo</string>
     <string name="descFbLogo">FacebookLogo</string>
     <string name="descInstagramLogo">InstagramLogo</string>
+    <string name="descPerfil">user logo</string>
+    <string name="cerrar">Cerrar Sesión</string>
+    <string name="perfil">Perfil</string>
+    <string name="pagina_principal">Pagina Principal</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="frase_menu">Organice su dinero y pagos de la mejor manera</string>
 </resources>

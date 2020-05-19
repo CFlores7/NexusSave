@@ -2,13 +2,14 @@ package com.example.proyecto
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.proyecto.databinding.FragmentHomeBinding
 
 /**
@@ -20,10 +21,16 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Mostrando ActionBar
+        (activity as AppCompatActivity).supportActionBar?.show()
+        //Setting Title
+        (activity as AppCompatActivity).supportActionBar?.title = "NexusSave"
+
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home, container, false)
 
         centerTitle()
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -50,5 +57,15 @@ class HomeFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.navdrawer_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item!!,
+            view!!.findNavController()) || super.onOptionsItemSelected(item)
     }
 }
