@@ -16,6 +16,7 @@ class PerfilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = ""
         (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
 
         val binding = DataBindingUtil.inflate<FragmentPerfilBinding>(inflater,
@@ -24,11 +25,5 @@ class PerfilFragment : Fragment() {
         setHasOptionsMenu(true)
 
         return binding.root
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar?.title = ""
     }
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentGastosBinding
 
 /**
@@ -20,10 +21,16 @@ class GastosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
         val binding = DataBindingUtil.inflate<FragmentGastosBinding>(inflater,
             R.layout.fragment_gastos, container, false)
 
         centerTitle()
+
+        binding.fabAddGasto.setOnClickListener{
+            it.findNavController()
+                .navigate(R.id.action_gastosFragment_to_nuevoGastoFragment)
+        }
 
         return binding.root
     }
@@ -50,11 +57,5 @@ class GastosFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
     }
 }

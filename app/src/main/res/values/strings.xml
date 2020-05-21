@@ -56,4 +56,9 @@
     <string name="pagina_principal">Pagina Principal</string>
     <string name="ingresos">Ingresos</string>
     <string name="frase_menu">Organice su dinero y pagos de la mejor manera</string>
+    <string name="gastos">Gastos</string>
+    <string name="pagos">Pagos</string>
+    <string name="contactanos">Contactanos</string>
+    <string name="fechaLimitePago">Fecha limite de pago</string>
+
 </resources>

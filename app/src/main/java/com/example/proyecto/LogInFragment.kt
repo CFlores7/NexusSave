@@ -1,6 +1,7 @@
 package com.example.proyecto
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,15 +23,16 @@ class LogInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Ocultando ActionBar
-        //(activity as AppCompatActivity).supportActionBar?.hide()
-       // (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
+        (activity as AppCompatActivity).supportActionBar?.hide()
+        (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
 
         val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in, container, false)
 
         binding.buttonIngresar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_logInFragment_to_homeFragment)
+            val intent = Intent(this.context, ActivityMain::class.java)
+            (activity as AppCompatActivity).finish()
+            startActivity(intent)
         }
         binding.buttonRegistrarse.setOnClickListener {
             it.findNavController()

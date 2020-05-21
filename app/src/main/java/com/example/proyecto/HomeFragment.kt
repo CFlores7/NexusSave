@@ -3,14 +3,17 @@ package com.example.proyecto
 import android.app.Activity
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.proyecto.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.fragment_perfil.*
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +28,8 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.show()
         //Setting Title
         (activity as AppCompatActivity).supportActionBar?.title = "NexusSave"
+        //Welcome
+        Toast.makeText(this.activity,"¡Bienvenido!", Toast.LENGTH_LONG).show()
 
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home, container, false)
@@ -59,13 +64,20 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun showProfile() {
+
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.navdrawer_menu, menu)
+        inflater?.inflate(R.menu.home_perfil, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!,
-            view!!.findNavController()) || super.onOptionsItemSelected(item)
+        when(item.itemId){
+            R.id.perfilFragment -> view!!.findNavController()
+                .navigate(R.id.action_homeFragment_to_perfilFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

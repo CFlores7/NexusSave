@@ -3,36 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/logInFragment">
-    <fragment
-        android:id="@+id/logInFragment"
-        android:name="com.example.proyecto.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
-        <action
-            android:id="@+id/action_logInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_logInFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.example.proyecto.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-        <action
-            android:id="@+id/action_signUpFragment_to_logInFragment"
-            app:destination="@id/logInFragment" />
-    </fragment>
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.proyecto.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ingresosFragment"
         android:name="com.example.proyecto.IngresosFragment"
         android:label="fragment_ingresos"
-        tools:layout="@layout/fragment_ingresos" />
+        tools:layout="@layout/fragment_ingresos" >
+        <action
+            android:id="@+id/action_ingresosFragment_to_nuevoIngresoFragment"
+            app:destination="@id/nuevoIngresoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoIngresoFragment"
+        android:name="com.example.proyecto.NuevoIngresoFragment"
+        android:label="fragment_nuevo_ingreso"
+        tools:layout="@layout/fragment_nuevo_ingreso" />
+    <fragment
+        android:id="@+id/gastosFragment"
+        android:name="com.example.proyecto.GastosFragment"
+        android:label="fragment_gastos"
+        tools:layout="@layout/fragment_gastos" >
+        <action
+            android:id="@+id/action_gastosFragment_to_nuevoGastoFragment"
+            app:destination="@id/nuevoGastoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoGastoFragment"
+        android:name="com.example.proyecto.NuevoGastoFragment"
+        android:label="fragment_nuevo_gasto"
+        tools:layout="@layout/fragment_nuevo_gasto" />
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.example.proyecto.PagosFragment"
+        android:label="fragment_pagos"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_pagosFragment_to_nuevoPagoFragment"
+            app:destination="@id/nuevoPagoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoPagoFragment"
+        android:name="com.example.proyecto.NuevoPagoFragment"
+        android:label="fragment_nuevo_pago"
+        tools:layout="@layout/fragment_nuevo_pago" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.proyecto.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/contactoFragment"
+        android:name="com.example.proyecto.ContactoFragment"
+        android:label="fragment_contacto"
+        tools:layout="@layout/fragment_contacto" />
 </navigation>

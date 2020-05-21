@@ -27,6 +27,8 @@ class NuevoPagoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "NUEVO PAGO"
+
         val binding = DataBindingUtil.inflate<FragmentNuevoPagoBinding>(inflater,
             R.layout.fragment_nuevo_pago, container, false)
 
@@ -58,12 +60,6 @@ class NuevoPagoFragment : Fragment() {
         )
         dpd.datePicker.minDate = System.currentTimeMillis()
         dpd.show()
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar?.title = "NUEVO PAGO"
     }
     //Centrar texto en ActionBar
     private fun centerTitle() {

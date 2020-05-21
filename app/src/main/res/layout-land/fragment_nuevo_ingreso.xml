@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".NuevoIngresoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,24 +19,22 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.1" />
 
         <EditText
             android:id="@+id/etConcepto"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_narrow"
             android:layout_marginTop="@dimen/margin_narrow"
-            android:layout_marginEnd="@dimen/margin_narrow"
             android:ems="10"
             android:hint="@string/concepto_ingreso"
             android:inputType="textPersonName"
             android:textColor="@color/colorTextBlack"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvConcepto" />
 
@@ -44,18 +42,18 @@
             android:id="@+id/tvMonto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_wide"
+            android:layout_marginStart="@dimen/margin_wide"
             android:text="@string/monto"
             android:textColor="@color/colorTextBlack"
             android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvConcepto"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etConcepto" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/etMonto" />
 
         <EditText
             android:id="@+id/etMonto"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_narrow"
             android:layout_marginTop="@dimen/margin_narrow"
@@ -66,7 +64,7 @@
             android:textColor="@color/colorTextBlack"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etConcepto"
             app:layout_constraintTop_toBottomOf="@+id/tvMonto" />
 
         <Button

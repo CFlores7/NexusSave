@@ -12,4 +12,5 @@
     <color name="colorRed">#FF0004</color>
     <color name="colorContacto">#0F335B</color>
     <color name="perfilColor">#3292CA</color>
+    <color name="menuColor">#1E2D3E</color>
 </resources>

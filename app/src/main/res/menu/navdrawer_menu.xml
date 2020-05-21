@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <group>
     <item
         android:id="@+id/homeFragment"
         android:title="@string/pagina_principal" />
     <item
         android:id="@+id/ingresosFragment"
         android:title="@string/ingresos" />
+    <item
+        android:id="@+id/gastosFragment"
+        android:title="@string/gastos" />
+    <item
+        android:id="@+id/pagosFragment"
+        android:title="@string/pagos" />
+    </group>
+    <item
+        android:id="@+id/contactoFragment"
+        android:title="@string/contactanos" />
+
 </menu>

@@ -2,42 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".PagosFragment">
+    android:orientation="horizontal"
+    tools:context=".GastosFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_narrow"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvConcepto"
+            android:id="@+id/tvUltGastos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
             android:layout_marginTop="@dimen/margin_narrow"
-            android:text="@string/concepto"
+            android:layout_marginEnd="@dimen/margin_narrow"
+            android:text="Ultimos Gastos:"
             android:textColor="@color/colorTextBlack"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/tvEstado"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvEstado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/estado"
-            android:textColor="@color/colorTextBlack"
-            android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tvConcepto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvConcepto" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddPago"
+            android:id="@+id/fabAddGasto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
@@ -48,14 +36,17 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ScrollView
-            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/fabAddPago"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:layout_marginTop="@dimen/margin_narrow"
+            android:layout_marginEnd="@dimen/margin_narrow"
+            android:layout_marginBottom="@dimen/margin_narrow"
+            app:layout_constraintBottom_toTopOf="@+id/fabAddGasto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvConcepto"
+            app:layout_constraintTop_toBottomOf="@id/tvUltGastos"
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,14 +70,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mensualidad"
+                        android:text="Membresia"
                         android:textColor="@color/colorTextBlack"
                         android:textSize="20sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/llayoutEstados"
+                android:id="@+id/llayoutEstados"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/llayoutFecha"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/llayoutConceptos"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$25"
+                    android:textColor="@color/colorRed"
+                    android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llayoutFecha"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
@@ -94,17 +105,20 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/llayoutConceptos"
+                    app:layout_constraintStart_toEndOf="@+id/llayoutEstados"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CANCELADO"
-                        android:textColor="@color/colorGreen"
+                        android:text="15/04/20"
+                        android:textColor="@color/colorTextBlack"
                         android:textSize="20sp" />
-                </LinearLayout>
+                    </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

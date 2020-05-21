@@ -25,10 +25,12 @@
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/navView"
             android:layout_gravity="start"
+            android:background="@color/menuColor"
+            app:itemTextColor="@color/colorTextPrimary"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/navdrawer_menu"/>
 

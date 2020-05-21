@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentPagosBinding
 
 /**
@@ -20,10 +21,17 @@ class PagosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "PAGOS"
+
         val binding = DataBindingUtil.inflate<FragmentPagosBinding>(inflater,
             R.layout.fragment_pagos, container, false)
 
         centerTitle()
+
+        binding.fabAddPago.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_pagosFragment_to_nuevoPagoFragment)
+        }
 
         return binding.root
     }
@@ -50,11 +58,5 @@ class PagosFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar?.title = "PAGOS"
     }
 }

@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".NuevoIngresoFragment">
+    android:orientation="horizontal"
+    tools:context=".NuevoPagoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,17 +26,15 @@
 
         <EditText
             android:id="@+id/etConcepto"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_narrow"
             android:layout_marginTop="@dimen/margin_narrow"
-            android:layout_marginEnd="@dimen/margin_narrow"
             android:ems="10"
-            android:hint="@string/concepto_ingreso"
+            android:hint="@string/concepto_pago"
             android:inputType="textPersonName"
             android:textColor="@color/colorTextBlack"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvConcepto" />
 
@@ -44,29 +42,27 @@
             android:id="@+id/tvMonto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_wide"
+            android:layout_marginStart="@dimen/margin_wide"
             android:text="@string/monto"
             android:textColor="@color/colorTextBlack"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etConcepto" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvConcepto"
+            app:layout_constraintStart_toStartOf="@+id/etMonto" />
 
         <EditText
             android:id="@+id/etMonto"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_narrow"
+            android:layout_marginStart="@dimen/margin_wide"
             android:layout_marginTop="@dimen/margin_narrow"
             android:layout_marginEnd="@dimen/margin_narrow"
             android:ems="10"
-            android:hint="@string/cantidad_monto"
+            android:hint="@string/cantidad_pago"
             android:inputType="numberDecimal"
             android:textColor="@color/colorTextBlack"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etConcepto"
             app:layout_constraintTop_toBottomOf="@+id/tvMonto" />
 
         <Button
@@ -91,5 +87,31 @@
             android:text="@string/agregar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_wide"
+            android:text="@string/bt_fecha"
+            android:background="@drawable/button_regresar"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etConcepto" />
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/fechaLimitePago"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btFecha"
+            app:layout_constraintStart_toEndOf="@+id/btFecha" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -49,12 +49,10 @@ class SignUpFragment : Fragment() {
         }
 
         binding.btnCancelar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_signUpFragment_to_logInFragment)
+            it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
         }
         binding.btnCrear.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_signUpFragment_to_logInFragment)
+            //it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
         }
 
         return binding.root

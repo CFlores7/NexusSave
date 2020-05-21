@@ -20,6 +20,8 @@ class NuevoIngresoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "NUEVO INGRESO"
+
         val binding = DataBindingUtil.inflate<FragmentNuevoIngresoBinding>(inflater,
             R.layout.fragment_nuevo_ingreso, container, false)
 
@@ -50,11 +52,5 @@ class NuevoIngresoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        (activity as AppCompatActivity).supportActionBar?.title = "NUEVO INGRESO"
     }
 }

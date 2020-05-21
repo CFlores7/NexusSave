@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     tools:context=".IngresosFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +55,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/margin_narrow"
         android:scaleType="center"
-        android:src="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

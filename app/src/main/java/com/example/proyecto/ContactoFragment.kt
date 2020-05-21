@@ -1,5 +1,6 @@
 package com.example.proyecto
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,18 +22,19 @@ class ContactoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "CONTACTANOS"
+
         val binding = DataBindingUtil.inflate<FragmentContactoBinding>(inflater,
             R.layout.fragment_contacto, container, false)
 
         centerTitle()
 
-        return binding.root
-    }
-    //Setting Title
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding.ivFacebook.setOnClickListener {
+            val i = context?.packageManager?.getLaunchIntentForPackage("com.facebook")
+            startActivity(i)
+        }
 
-        (activity as AppCompatActivity).supportActionBar?.title = "CONTACTANOS"
+        return binding.root
     }
     //Centrar texto en ActionBar
     private fun centerTitle() {

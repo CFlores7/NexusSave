@@ -14,7 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.proyecto.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class ActivityMain : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
 
@@ -35,4 +35,5 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.myNavHostFragment)
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
+
 }
