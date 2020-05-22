@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentVerIngresoBinding
 import java.util.ArrayList
 
@@ -25,6 +26,11 @@ class VerIngresoFragment : Fragment() {
             R.layout.fragment_ver_ingreso, container, false)
 
         centerTitle()
+
+        binding.btRegresar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_verIngresoFragment_to_ingresosFragment)
+        }
 
         return binding.root
     }

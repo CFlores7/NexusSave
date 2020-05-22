@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoPagoBinding
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
@@ -36,6 +37,11 @@ class NuevoPagoFragment : Fragment() {
 
         binding.btFecha.setOnClickListener {
             chooseDate(binding.btFecha, binding.etFecha)
+        }
+
+        binding.btCancelar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nuevoPagoFragment_to_pagosFragment)
         }
 
         return binding.root

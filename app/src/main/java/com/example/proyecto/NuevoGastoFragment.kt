@@ -16,6 +16,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.adapters.CalendarViewBindingAdapter.setDate
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoGastoBinding
 import java.util.*
 
@@ -41,6 +42,11 @@ class NuevoGastoFragment : Fragment() {
 
         binding.btFecha.setOnClickListener {
             chooseDate(binding.etFecha)
+        }
+
+        binding.btCancelar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nuevoGastoFragment_to_gastosFragment)
         }
 
         return binding.root

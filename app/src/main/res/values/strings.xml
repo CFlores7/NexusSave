@@ -9,7 +9,7 @@
     <string name="bt_ingresar">INGRESAR</string>
     <string name="tv_registrarse">Registrarse</string>
     <string name="tv_nombre">Nombre:</string>
-    <string name="tv_confpass">Repita contraseña:</string>
+    <string name="tv_confpass">Cofirme contraseña:</string>
     <string name="tv_ciudad">Ciudad:</string>
     <string name="tv_pais">Pais:</string>
     <string name="tv_fechadenaci">Fecha de nacimiento:</string>

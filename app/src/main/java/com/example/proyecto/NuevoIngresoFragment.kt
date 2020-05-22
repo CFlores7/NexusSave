@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoIngresoBinding
 
 /**
@@ -26,6 +27,11 @@ class NuevoIngresoFragment : Fragment() {
             R.layout.fragment_nuevo_ingreso, container, false)
 
         centerTitle()
+
+        binding.btCancelar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nuevoIngresoFragment_to_ingresosFragment)
+        }
 
         return binding.root
     }

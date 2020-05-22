@@ -21,12 +21,19 @@
         <action
             android:id="@+id/action_ingresosFragment_to_nuevoIngresoFragment"
             app:destination="@id/nuevoIngresoFragment" />
+        <action
+            android:id="@+id/action_ingresosFragment_to_verIngresoFragment"
+            app:destination="@id/verIngresoFragment" />
     </fragment>
     <fragment
         android:id="@+id/nuevoIngresoFragment"
         android:name="com.example.proyecto.NuevoIngresoFragment"
         android:label="fragment_nuevo_ingreso"
-        tools:layout="@layout/fragment_nuevo_ingreso" />
+        tools:layout="@layout/fragment_nuevo_ingreso" >
+        <action
+            android:id="@+id/action_nuevoIngresoFragment_to_ingresosFragment"
+            app:destination="@id/ingresosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gastosFragment"
         android:name="com.example.proyecto.GastosFragment"
@@ -35,12 +42,19 @@
         <action
             android:id="@+id/action_gastosFragment_to_nuevoGastoFragment"
             app:destination="@id/nuevoGastoFragment" />
+        <action
+            android:id="@+id/action_gastosFragment_to_verGastoFragment"
+            app:destination="@id/verGastoFragment" />
     </fragment>
     <fragment
         android:id="@+id/nuevoGastoFragment"
         android:name="com.example.proyecto.NuevoGastoFragment"
         android:label="fragment_nuevo_gasto"
-        tools:layout="@layout/fragment_nuevo_gasto" />
+        tools:layout="@layout/fragment_nuevo_gasto" >
+        <action
+            android:id="@+id/action_nuevoGastoFragment_to_gastosFragment"
+            app:destination="@id/gastosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.example.proyecto.PagosFragment"
@@ -49,12 +63,19 @@
         <action
             android:id="@+id/action_pagosFragment_to_nuevoPagoFragment"
             app:destination="@id/nuevoPagoFragment" />
+        <action
+            android:id="@+id/action_pagosFragment_to_verPagoFragment"
+            app:destination="@id/verPagoFragment" />
     </fragment>
     <fragment
         android:id="@+id/nuevoPagoFragment"
         android:name="com.example.proyecto.NuevoPagoFragment"
         android:label="fragment_nuevo_pago"
-        tools:layout="@layout/fragment_nuevo_pago" />
+        tools:layout="@layout/fragment_nuevo_pago" >
+        <action
+            android:id="@+id/action_nuevoPagoFragment_to_pagosFragment"
+            app:destination="@id/pagosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.proyecto.PerfilFragment"
@@ -65,4 +86,31 @@
         android:name="com.example.proyecto.ContactoFragment"
         android:label="fragment_contacto"
         tools:layout="@layout/fragment_contacto" />
+    <fragment
+        android:id="@+id/verIngresoFragment"
+        android:name="com.example.proyecto.VerIngresoFragment"
+        android:label="fragment_ver_ingreso"
+        tools:layout="@layout/fragment_ver_ingreso" >
+        <action
+            android:id="@+id/action_verIngresoFragment_to_ingresosFragment"
+            app:destination="@id/ingresosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verGastoFragment"
+        android:name="com.example.proyecto.VerGastoFragment"
+        android:label="fragment_ver_gasto"
+        tools:layout="@layout/fragment_ver_gasto" >
+        <action
+            android:id="@+id/action_verGastoFragment_to_gastosFragment"
+            app:destination="@id/gastosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verPagoFragment"
+        android:name="com.example.proyecto.VerPagoFragment"
+        android:label="fragment_ver_pago"
+        tools:layout="@layout/fragment_ver_pago" >
+        <action
+            android:id="@+id/action_verPagoFragment_to_pagosFragment"
+            app:destination="@id/pagosFragment" />
+    </fragment>
 </navigation>

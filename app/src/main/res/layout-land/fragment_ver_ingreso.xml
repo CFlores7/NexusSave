@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    tools:context=".VerGastoFragment">
+    tools:context=".VerIngresoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <TextView
             android:id="@+id/tvConcepto"
@@ -21,10 +20,10 @@
             android:textSize="26sp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19999999" />
+            app:layout_constraintVertical_bias="0.2" />
 
         <TextView
             android:id="@+id/tvCantidad"
@@ -88,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_narrow"
-            android:textColor="@color/colorRed"
+            android:textColor="@color/colorGreen"
             android:textSize="26sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvCantidad"
             app:layout_constraintStart_toEndOf="@+id/tvCantidad" />

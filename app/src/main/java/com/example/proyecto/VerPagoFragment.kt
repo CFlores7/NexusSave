@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentVerPagoBinding
 import java.util.ArrayList
 
@@ -25,6 +26,11 @@ class VerPagoFragment : Fragment() {
             R.layout.fragment_ver_pago, container, false)
 
         centerTitle()
+
+        binding.btRegresar.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_verPagoFragment_to_pagosFragment)
+        }
 
         return binding.root
     }

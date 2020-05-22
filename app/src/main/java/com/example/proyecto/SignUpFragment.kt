@@ -63,11 +63,10 @@ class SignUpFragment : Fragment() {
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
-        val minDay = 3*24*60*60*1000
 
         val dpd = DatePickerDialog(
             activity as AppCompatActivity,
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 val mes = monthOfYear+1
                 // Display Selected date in textbox
                 etFecha.setText("" + dayOfMonth + "/" + mes + "/" + year)

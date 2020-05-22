@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SignUpFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSignUp"
+        android:orientation="horizontal"
+        android:scrollbarSize="20sp">
+
+        <TextView
+            android:id="@+id/tvFechadeN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTopText"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_fechadenaci"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvPais"
+            app:layout_constraintTop_toBottomOf="@+id/tvPais" />
+
+        <TextView
+            android:id="@+id/tvRegistrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/tv_registrarse"
+            android:textColor="@android:color/background_dark"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:layout_marginTop="@dimen/margin_narrow"
+            android:layout_marginBottom="@dimen/margin_narrow"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_nombre"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRegistrarse"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTopText"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_correo"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvNombre"
+            app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+
+        <TextView
+            android:id="@+id/tvPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTopText"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_pass"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvCorreo"
+            app:layout_constraintTop_toBottomOf="@+id/tvCorreo" />
+
+        <TextView
+            android:id="@+id/tvConfiPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTopText"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_confpass"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvPass"
+            app:layout_constraintTop_toBottomOf="@+id/tvPass" />
+
+        <TextView
+            android:id="@+id/tvCiudad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_ciudad"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/etNombre"
+            app:layout_constraintStart_toEndOf="@+id/etNombre" />
+
+        <TextView
+            android:id="@+id/tvPais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_wide"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tv_pais"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvCiudad"
+            app:layout_constraintTop_toBottomOf="@+id/tvCiudad" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="@string/et_nombre"
+            android:inputType="textPersonName"
+            android:scrollbarSize="20sp"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvNombre"
+            app:layout_constraintStart_toEndOf="@+id/tvNombre" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="@string/et_correo"
+            android:inputType="textEmailAddress"
+            android:scrollbarSize="20sp"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvCorreo"
+            app:layout_constraintEnd_toEndOf="@+id/etNombre"
+            app:layout_constraintStart_toEndOf="@+id/tvCorreo" />
+
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="@string/et_pass"
+            android:inputType="textPassword"
+            android:scrollbarSize="20sp"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvPass"
+            app:layout_constraintEnd_toEndOf="@+id/etEmail"
+            app:layout_constraintStart_toEndOf="@+id/tvPass" />
+
+        <EditText
+            android:id="@+id/etConfPass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:ems="10"
+            android:hint="@string/et_pass"
+            android:inputType="textPassword"
+            android:scrollbarSize="20sp"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvConfiPass"
+            app:layout_constraintStart_toEndOf="@+id/tvConfiPass" />
+
+        <EditText
+            android:id="@+id/etCiudad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/margin_narrow"
+            android:ems="10"
+            android:hint="@string/et_ciudad"
+            android:inputType="textPersonName"
+            android:scrollbarSize="20sp"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvCiudad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvCiudad" />
+
+        <Spinner
+            android:id="@+id/spPais"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/margin_narrow"
+            android:entries="@array/country_array"
+            android:scrollbarSize="20sp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:theme="@style/spinner_paises"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvPais"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvPais" />
+
+        <EditText
+            android:id="@+id/etFechaNaci"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_narrow"
+            android:ems="10"
+            android:hint="@string/etFecha"
+            android:inputType="date"
+            android:scrollbarSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorTextPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvFechadeN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvFechadeN" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:layout_marginBottom="@dimen/margin_narrow"
+            android:background="@drawable/button_registrarse"
+            android:text="@string/bt_cancelar"
+            android:textColor="@color/colorTextPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnCrear"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_narrow"
+            android:text="@string/bt_crear"
+            android:background="@drawable/button_ingresar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etFechaNaci"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
