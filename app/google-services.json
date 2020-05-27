@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "127266620751",
+    "firebase_url": "https://nexussave-74ceb.firebaseio.com",
+    "project_id": "nexussave-74ceb",
+    "storage_bucket": "nexussave-74ceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127266620751:android:ee762094c60fb17be5f13a",
+        "android_client_info": {
+          "package_name": "com.example.proyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127266620751-2g31v0f5j27ekiiprp9ct9vhpopnr3mn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.proyecto",
+            "certificate_hash": "21971d21b9b70a4f532058dc954dfba6682f6d79"
+          }
+        },
+        {
+          "client_id": "127266620751-mmhbdniafkeog8oecfn0sv44ojdjahtu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXY7X2u72VU1Da3gE-jizI-HIxP-H-8sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127266620751-mmhbdniafkeog8oecfn0sv44ojdjahtu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

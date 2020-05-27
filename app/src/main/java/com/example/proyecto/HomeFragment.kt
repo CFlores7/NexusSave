@@ -28,8 +28,6 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.show()
         //Setting Title
         (activity as AppCompatActivity).supportActionBar?.title = "NexusSave"
-        //Welcome
-        Toast.makeText(this.activity,"¡Bienvenido!", Toast.LENGTH_LONG).show()
 
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
             R.layout.fragment_home, container, false)

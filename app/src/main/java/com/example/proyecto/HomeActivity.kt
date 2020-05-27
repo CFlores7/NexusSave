@@ -15,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             val intent = Intent(this, LoginActivity::class.java)
+            this.finish()
             startActivity(intent)
         },3000)
     }

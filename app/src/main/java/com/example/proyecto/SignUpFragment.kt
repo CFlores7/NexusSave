@@ -2,24 +2,29 @@ package com.example.proyecto
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
+import android.text.TextUtils
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentSignUpBinding
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -52,7 +57,7 @@ class SignUpFragment : Fragment() {
             it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
         }
         binding.btnCrear.setOnClickListener {
-            //it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
+            registrarUsuario(binding.etEmail.text.toString(), binding.etPass.text.toString())
         }
 
         return binding.root
@@ -77,5 +82,22 @@ class SignUpFragment : Fragment() {
         )
         dpd.datePicker.maxDate = System.currentTimeMillis()
         dpd.show()
+    }
+
+    private fun registrarUsuario(email: String, password: String){
+        if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
+            Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
+            .addOnCompleteListener {
+                if(!it.isSuccessful) return@addOnCompleteListener
+
+                Toast.makeText(this.activity, "Usuario creado correctamente", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this.activity, "Error al crear el usuario", Toast.LENGTH_LONG).show()
+            }
     }
 }
