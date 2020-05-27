@@ -33,18 +33,15 @@ class LogInFragment : Fragment() {
             R.layout.fragment_log_in, container, false)
 
         binding.buttonIngresar.setOnClickListener {
-
             ingresar(binding.etEmail.text.toString(), binding.etPass.text.toString())
-
-
         }
         binding.buttonRegistrarse.setOnClickListener {
             it.findNavController()
                 .navigate(R.id.action_logInFragment_to_signUpFragment)
         }
-
         return binding.root
     }
+
     private fun ingresar(email: String, password: String){
         if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
             Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
