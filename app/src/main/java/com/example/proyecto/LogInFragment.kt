@@ -49,9 +49,9 @@ class LogInFragment : Fragment() {
             val intent = Intent(this.context, ActivityMain::class.java)
             this.activity!!.finish()
             startActivity(intent)
+            Toast.makeText(this.activity,"¡Bienvenido!", Toast.LENGTH_LONG).show()
         }
     }
-
 
     private fun ingresar(email: String, password: String){
         if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){

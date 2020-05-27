@@ -24,6 +24,8 @@ class PerfilFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        binding.
+
         return binding.root
     }
 }
