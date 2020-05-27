@@ -57,7 +57,11 @@ class SignUpFragment : Fragment() {
             it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
         }
         binding.btnCrear.setOnClickListener {
+            if(binding.etPass.text.toString().equals(binding.etConfPass.text.toString())){
             registrarUsuario(binding.etEmail.text.toString(), binding.etPass.text.toString())
+            }else{
+                Toast.makeText(this.activity, "Passwords doesn't match", Toast.LENGTH_LONG).show()
+            }
         }
 
         return binding.root

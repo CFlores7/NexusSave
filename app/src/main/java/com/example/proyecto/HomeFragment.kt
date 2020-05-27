@@ -62,10 +62,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showProfile() {
-
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater?.inflate(R.menu.home_perfil, menu)

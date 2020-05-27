@@ -32,6 +32,8 @@ class LogInFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in, container, false)
 
+        loggedUser()
+
         binding.buttonIngresar.setOnClickListener {
             ingresar(binding.etEmail.text.toString(), binding.etPass.text.toString())
         }
@@ -41,6 +43,15 @@ class LogInFragment : Fragment() {
         }
         return binding.root
     }
+    private fun loggedUser(){
+        var user = FirebaseAuth.getInstance().currentUser
+        if (user != null){
+            val intent = Intent(this.context, ActivityMain::class.java)
+            this.activity!!.finish()
+            startActivity(intent)
+        }
+    }
+
 
     private fun ingresar(email: String, password: String){
         if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
