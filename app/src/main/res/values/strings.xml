@@ -61,5 +61,6 @@
     <string name="contactanos">Contactanos</string>
     <string name="fechaLimitePago">Fecha limite de pago</string>
     <string name="ivApp">logoApp</string>
+    <string name="estadisticas">Estadisticas</string>
 
 </resources>
