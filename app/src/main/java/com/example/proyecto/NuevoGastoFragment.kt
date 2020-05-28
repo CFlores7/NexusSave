@@ -45,8 +45,7 @@ class NuevoGastoFragment : Fragment() {
         }
 
         binding.btCancelar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_nuevoGastoFragment_to_gastosFragment)
+            activity!!.onBackPressed()
         }
 
         return binding.root

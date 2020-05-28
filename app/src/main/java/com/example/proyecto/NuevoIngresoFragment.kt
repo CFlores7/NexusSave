@@ -29,8 +29,7 @@ class NuevoIngresoFragment : Fragment() {
         centerTitle()
 
         binding.btCancelar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_nuevoIngresoFragment_to_ingresosFragment)
+            activity!!.onBackPressed()
         }
 
         return binding.root

@@ -40,8 +40,7 @@ class NuevoPagoFragment : Fragment() {
         }
 
         binding.btCancelar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_nuevoPagoFragment_to_pagosFragment)
+            activity!!.onBackPressed()
         }
 
         return binding.root
