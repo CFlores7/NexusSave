@@ -19,6 +19,7 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -50,6 +51,7 @@ dependencies {
     //Firebase
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
 
     //MPAndroidCharts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

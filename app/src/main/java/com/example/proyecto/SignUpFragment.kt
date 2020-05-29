@@ -23,10 +23,12 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 /**
  * A simple [Fragment] subclass.
@@ -57,8 +59,14 @@ class SignUpFragment : Fragment() {
             it.findNavController().navigate(R.id.action_signUpFragment_to_logInFragment)
         }
         binding.btnCrear.setOnClickListener {
+            if(binding.etPass.length()<8){
+                Toast.makeText(this.activity, "Contraseña debe tener mas de 8 caracteres",
+                    Toast.LENGTH_LONG).show()
+            }
             if(binding.etPass.text.toString().equals(binding.etConfPass.text.toString())){
-            registrarUsuario(binding.etEmail.text.toString(), binding.etPass.text.toString())
+            registrarUsuario(binding.etNombre.text.toString(), binding.etEmail.text.toString(),
+                            binding.etPass.text.toString(), binding.etCiudad.text.toString(),
+                    binding.spPais.selectedItem.toString(), binding.etFechaNaci.text.toString())
             }else{
                 Toast.makeText(this.activity, "Passwords doesn't match", Toast.LENGTH_LONG).show()
             }
@@ -88,7 +96,7 @@ class SignUpFragment : Fragment() {
         dpd.show()
     }
 
-    private fun registrarUsuario(email: String, password: String){
+    private fun registrarUsuario(fullname:String, email: String, password: String, ciudad: String, pais: String, fechaNac: String){
         if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
             Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
             return
@@ -97,7 +105,15 @@ class SignUpFragment : Fragment() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener
-
+                val userID = FirebaseAuth.getInstance().currentUser!!.uid
+                val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+                val user = HashMap<String, Any>()
+                user["fName"] = fullname
+                user["email"] = email
+                user["ciudad"] = ciudad
+                user["pais"] = pais
+                user["birth"] = fechaNac
+                documentReference.set(user)
                 Toast.makeText(this.activity, "Usuario creado correctamente", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {

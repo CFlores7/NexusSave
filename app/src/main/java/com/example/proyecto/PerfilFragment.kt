@@ -9,11 +9,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.proyecto.databinding.FragmentPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 
 /**
  * A simple [Fragment] subclass.
  */
 class PerfilFragment : Fragment() {
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val db = FirebaseFirestore.getInstance()
+    private val documentReference = db.collection("users").document(userID)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +30,8 @@ class PerfilFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentPerfilBinding>(inflater,
             R.layout.fragment_perfil, container, false)
 
+        loadUserData(binding)
+
         setHasOptionsMenu(true)
 
         binding.btSignOut.setOnClickListener {
@@ -33,6 +40,35 @@ class PerfilFragment : Fragment() {
 
         return binding.root
     }
+    private fun loadUserData(binding: FragmentPerfilBinding) {
+        var nombre: String
+        var ciudad: String
+        var pais: String
+        var fechaNac: String
+        var email: String
+
+        documentReference.get()
+            .addOnSuccessListener {
+                if(it.exists()){
+                    nombre = it.getString("fName")!!
+                    ciudad = it.getString("ciudad")!!
+                    pais = it.getString("pais")!!
+                    fechaNac = it.getString("birth")!!
+                    email = it.getString("email")!!
+
+                    //val user = it.getData()
+
+                    binding.tvNombre.text = nombre
+                    binding.tvUbicacion.text = (ciudad + ", " + pais)
+                    binding.tvFechaNaci.text = fechaNac
+                    binding.tvCorreo.text = email
+                }
+            }
+            .addOnFailureListener{
+                Toast.makeText(this.activity, "Error!", Toast.LENGTH_SHORT).show()
+            }
+    }
+
     private fun cerrarSesion(){
         val intent = Intent(this.context, LoginActivity::class.java)
         FirebaseAuth.getInstance().signOut()
