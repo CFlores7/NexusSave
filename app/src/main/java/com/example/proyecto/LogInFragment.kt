@@ -32,7 +32,7 @@ class LogInFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in, container, false)
 
-        loggedUser()
+        //loggedUser()
 
         binding.buttonIngresar.setOnClickListener {
             ingresar(binding.etEmail.text.toString(), binding.etPass.text.toString())

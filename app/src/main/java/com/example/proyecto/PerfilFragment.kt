@@ -56,8 +56,6 @@ class PerfilFragment : Fragment() {
                     fechaNac = it.getString("birth")!!
                     email = it.getString("email")!!
 
-                    //val user = it.getData()
-
                     binding.tvNombre.text = nombre
                     binding.tvUbicacion.text = (ciudad + ", " + pais)
                     binding.tvFechaNaci.text = fechaNac
