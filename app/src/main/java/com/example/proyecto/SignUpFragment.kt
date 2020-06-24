@@ -107,6 +107,7 @@ class SignUpFragment : Fragment() {
                 if(!it.isSuccessful) return@addOnCompleteListener
                 val userID = FirebaseAuth.getInstance().currentUser!!.uid
                 val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+
                 val user = HashMap<String, Any>()
                 user["fName"] = fullname
                 user["email"] = email

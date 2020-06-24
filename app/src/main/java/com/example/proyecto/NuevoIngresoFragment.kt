@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoIngresoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 /**
  * A simple [Fragment] subclass.
@@ -29,6 +32,11 @@ class NuevoIngresoFragment : Fragment() {
         centerTitle()
 
         binding.btCancelar.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
+        binding.btAgregar.setOnClickListener {
+            agregarIngreso(binding.etConcepto.text.toString(), binding.etMonto.text.toString())
             activity!!.onBackPressed()
         }
 
@@ -57,5 +65,19 @@ class NuevoIngresoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+
+    private fun agregarIngreso(concepto: String, monto: String){
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+            .collection("ingresos")
+
+        val ingreso = HashMap<String, Any>()
+        ingreso["concepto"] = concepto
+        ingreso["monto"] = monto
+
+        documentReference.add(ingreso)
+
+        Toast.makeText(this.activity, "Ingreso agregado correctamente", Toast.LENGTH_LONG).show()
     }
 }

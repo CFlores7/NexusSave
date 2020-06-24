@@ -1,8 +1,8 @@
 package com.example.proyecto
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.proyecto.databinding.FragmentContactoBinding
-import java.util.ArrayList
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -30,8 +31,14 @@ class ContactoFragment : Fragment() {
         centerTitle()
 
         binding.ivFacebook.setOnClickListener {
-            val i = context?.packageManager?.getLaunchIntentForPackage("com.facebook")
-            startActivity(i)
+            /*try {
+                activity!!.packageManager.getPackageInfo("com.facebook.katana", 0)
+                var i = Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/1895401814079636"))
+            } catch (e: Exception) {
+                var i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Catrinsv"))
+            }
+
+            startActivity()*/
         }
 
         return binding.root
@@ -59,5 +66,9 @@ class ContactoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+
+    private fun getOpenFacebookIntent() {
+
     }
 }

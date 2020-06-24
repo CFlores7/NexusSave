@@ -18,6 +18,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.adapters.CalendarViewBindingAdapter.setDate
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoGastoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_nuevo_gasto.*
 import java.util.*
 
 /**
@@ -45,6 +48,12 @@ class NuevoGastoFragment : Fragment() {
         }
 
         binding.btCancelar.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
+        binding.btAgregar.setOnClickListener {
+            agregarGasto(binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
+                            binding.etFecha.text.toString())
             activity!!.onBackPressed()
         }
 
@@ -96,5 +105,20 @@ class NuevoGastoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+
+    private fun agregarGasto(concepto: String, monto: String, fecha: String){
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+            .collection("gastos")
+
+        val gasto = HashMap<String, Any>()
+        gasto["concepto"] = concepto
+        gasto["monto"] = monto
+        gasto["fecha"] = fecha
+
+        documentReference.add(gasto)
+
+        Toast.makeText(this.activity, "Gasto agregado correctamente", Toast.LENGTH_LONG).show()
     }
 }

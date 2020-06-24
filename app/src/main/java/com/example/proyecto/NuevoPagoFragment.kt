@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -15,6 +16,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoPagoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
 
@@ -40,6 +43,11 @@ class NuevoPagoFragment : Fragment() {
         }
 
         binding.btCancelar.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
+        binding.btAgregar.setOnClickListener {
+
             activity!!.onBackPressed()
         }
 
@@ -89,5 +97,19 @@ class NuevoPagoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+
+    private fun agregarIngreso(concepto: String, monto: String, fecha: String){
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
+            .collection("pagos")
+
+        val pago = HashMap<String, Any>()
+        pago["concepto"] = concepto
+        pago["monto"] = monto
+
+        documentReference.add(pago)
+
+        Toast.makeText(this.activity, "Pago agregado correctamente", Toast.LENGTH_LONG).show()
     }
 }

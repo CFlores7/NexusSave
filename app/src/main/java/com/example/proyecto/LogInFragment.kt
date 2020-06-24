@@ -32,8 +32,6 @@ class LogInFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in, container, false)
 
-        //loggedUser()
-
         binding.buttonIngresar.setOnClickListener {
             ingresar(binding.etEmail.text.toString(), binding.etPass.text.toString())
         }
@@ -43,16 +41,6 @@ class LogInFragment : Fragment() {
         }
         return binding.root
     }
-    private fun loggedUser(){
-        var user = FirebaseAuth.getInstance().currentUser
-        if (user != null){
-            val intent = Intent(this.context, ActivityMain::class.java)
-            this.activity!!.finish()
-            startActivity(intent)
-            Toast.makeText(this.activity,"¡Bienvenido!", Toast.LENGTH_LONG).show()
-        }
-    }
-
     private fun ingresar(email: String, password: String){
         if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
             Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
