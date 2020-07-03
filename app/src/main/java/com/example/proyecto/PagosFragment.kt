@@ -1,21 +1,31 @@
 package com.example.proyecto
 
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentPagosBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 /**
  * A simple [Fragment] subclass.
  */
 class PagosFragment : Fragment() {
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val db = FirebaseFirestore.getInstance()
+    private val collectionRef = db.collection("users")
+    private val pagosRef = collectionRef.document(userID).collection("pagos")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +36,54 @@ class PagosFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentPagosBinding>(inflater,
             R.layout.fragment_pagos, container, false)
 
-        centerTitle()
+        val listCon = binding.llayoutConceptos
+        val listEst = binding.llayoutEstados
+
+        pagosRef.addSnapshotListener { value, e ->
+            if (e != null) {
+                return@addSnapshotListener
+            }
+
+            val pagoCon = ArrayList<String>()
+            val pagoEst = ArrayList<String>()
+            for (doc in value!!) {
+                doc.getString("concepto")?.let {
+                    pagoCon.add(it)
+                }
+                doc.getString("estado")?.let {
+                    pagoEst.add(it)
+                }
+            }
+
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+
+            params.setMargins(0, 16, 0, 16)
+            params.gravity = Gravity.CENTER
+
+            for (i in 0 until pagoCon.size) {
+                val tvCon = TextView(context)
+                val tvEst = TextView(context)
+
+                tvCon.text = pagoCon[i]
+                tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvCon.layoutParams = params
+                listCon?.addView(tvCon)
+
+                tvEst.text = pagoEst[i]
+                tvEst.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                if (tvEst.text.equals("PENDIENTE")){
+                    tvEst.setTextColor(getResources().getColor(R.color.colorRed))
+                } else if(tvEst.text.equals("CANCELADO")){
+                    tvEst.setTextColor(getResources().getColor(R.color.colorGreen))
+                }
+                tvEst.layoutParams = params
+                listEst?.addView(tvEst)
+            }
+
+        }
 
         binding.fabAddPago.setOnClickListener {
             it.findNavController()
@@ -35,28 +92,5 @@ class PagosFragment : Fragment() {
 
         return binding.root
     }
-    //Centrar Title en ActionBar
-    private fun centerTitle() {
-        val textViews = ArrayList<View>()
-        activity?.window?.decorView?.findViewsWithText(textViews, activity?.title, View.FIND_VIEWS_WITH_TEXT)
-        if (textViews.size > 0) {
-            var appCompatTextView: AppCompatTextView? = null
-            if (textViews.size == 1)
-                appCompatTextView = textViews[0] as AppCompatTextView
-            else {
-                for (v in textViews) {
-                    if (v.parent is Toolbar) {
-                        appCompatTextView = v as AppCompatTextView
-                        break
-                    }
-                }
-            }
-            if (appCompatTextView != null) {
-                val params = appCompatTextView.layoutParams
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT
-                appCompatTextView.layoutParams = params
-                appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            }
-        }
-    }
+
 }

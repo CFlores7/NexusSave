@@ -1,21 +1,31 @@
 package com.example.proyecto
 
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentGastosBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 /**
  * A simple [Fragment] subclass.
  */
 class GastosFragment : Fragment() {
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val db = FirebaseFirestore.getInstance()
+    private val collectionRef = db.collection("users")
+    private val gastosRef = collectionRef.document(userID).collection("gastos")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +36,51 @@ class GastosFragment : Fragment() {
             R.layout.fragment_gastos, container, false)
 
         centerTitle()
+
+        val listCon = binding.llayoutConceptos
+        val listMon = binding.llayoutMonto
+
+        gastosRef.addSnapshotListener { value, e ->
+            if (e != null) {
+                return@addSnapshotListener
+            }
+
+            val gastosCon = ArrayList<String>()
+            val gastosMon = ArrayList<String>()
+            for (doc in value!!) {
+                doc.getString("concepto")?.let {
+                    gastosCon.add(it)
+                }
+                doc.getString("monto")?.let {
+                    gastosMon.add(it)
+                }
+            }
+
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+
+            params.setMargins(0, 16, 0, 16)
+            params.gravity = Gravity.CENTER
+
+            for (i in 0 until gastosCon.size) {
+                val tvCon = TextView(context)
+                val tvMon = TextView(context)
+
+                tvCon.text = gastosCon[i]
+                tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvCon.layoutParams = params
+                listCon?.addView(tvCon)
+
+                tvMon.text = "$" + gastosMon[i]
+                tvMon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                tvMon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvMon.layoutParams = params
+                listMon?.addView(tvMon)
+            }
+
+        }
 
         binding.fabAddGasto.setOnClickListener{
             it.findNavController()

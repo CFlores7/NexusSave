@@ -80,7 +80,24 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.proyecto.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <argument
+            android:name="nombre"
+            app:argType="string"
+            android:defaultValue="undefined" />
+        <argument
+            android:name="ubicacion"
+            app:argType="string"
+            android:defaultValue="undefined" />
+        <argument
+            android:name="fechaNac"
+            app:argType="string"
+            android:defaultValue="undefined" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="undefined" />
+    </fragment>
     <fragment
         android:id="@+id/contactoFragment"
         android:name="com.example.proyecto.ContactoFragment"

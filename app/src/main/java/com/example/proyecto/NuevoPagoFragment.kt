@@ -18,6 +18,7 @@ import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoPagoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_nuevo_pago.*
 import java.util.*
 import javax.xml.datatype.DatatypeConstants.MONTHS
 
@@ -47,6 +48,8 @@ class NuevoPagoFragment : Fragment() {
         }
 
         binding.btAgregar.setOnClickListener {
+            agregarPago(binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
+                        binding.etFecha.text.toString())
 
             activity!!.onBackPressed()
         }
@@ -99,7 +102,8 @@ class NuevoPagoFragment : Fragment() {
         }
     }
 
-    private fun agregarIngreso(concepto: String, monto: String, fecha: String){
+    private fun agregarPago(concepto: String, monto: String, fecha: String){
+        val estado = "PENDIENTE"
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
             .collection("pagos")
@@ -107,6 +111,8 @@ class NuevoPagoFragment : Fragment() {
         val pago = HashMap<String, Any>()
         pago["concepto"] = concepto
         pago["monto"] = monto
+        pago["fecha"] = fecha
+        pago["estado"] = estado
 
         documentReference.add(pago)
 

@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
         when(item.itemId){
             R.id.perfilFragment -> view!!.findNavController()
                 .navigate(R.id.action_homeFragment_to_perfilFragment)
+
         }
         return super.onOptionsItemSelected(item)
     }

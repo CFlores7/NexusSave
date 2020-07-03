@@ -1,14 +1,21 @@
 package com.example.proyecto
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.util.TypedValue
 import android.view.*
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.proyecto.databinding.FragmentPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -24,13 +31,13 @@ class PerfilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = ""
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
         (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
 
         val binding = DataBindingUtil.inflate<FragmentPerfilBinding>(inflater,
             R.layout.fragment_perfil, container, false)
 
-        loadUserData(binding)
+        loadUser(binding)
 
         setHasOptionsMenu(true)
 
@@ -40,31 +47,23 @@ class PerfilFragment : Fragment() {
 
         return binding.root
     }
-    private fun loadUserData(binding: FragmentPerfilBinding) {
-        var nombre: String
-        var ciudad: String
-        var pais: String
-        var fechaNac: String
-        var email: String
 
-        documentReference.get()
-            .addOnSuccessListener {
-                if(it.exists()){
-                    nombre = it.getString("fName")!!
-                    ciudad = it.getString("ciudad")!!
-                    pais = it.getString("pais")!!
-                    fechaNac = it.getString("birth")!!
-                    email = it.getString("email")!!
+    private fun loadUser(binding: FragmentPerfilBinding){
 
-                    binding.tvNombre.text = nombre
-                    binding.tvUbicacion.text = (ciudad + ", " + pais)
-                    binding.tvFechaNaci.text = fechaNac
-                    binding.tvCorreo.text = email
-                }
+        documentReference.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                return@addSnapshotListener
             }
-            .addOnFailureListener{
-                Toast.makeText(this.activity, "Error!", Toast.LENGTH_SHORT).show()
+            if (snapshot != null && snapshot.exists()) {
+                binding.tvNombre.text = snapshot.getString("fName")!!
+                binding.tvUbicacion.text = (snapshot.getString("ciudad")!! + ", " + snapshot.getString("pais")!!)
+                binding.tvFechaNaci.text = snapshot.getString("birth")!!
+                binding.tvCorreo.text = snapshot.getString("email")!!
+            } else {
+                Log.d(TAG, "No Cambio")
             }
+
+        }
     }
 
     private fun cerrarSesion(){
@@ -74,4 +73,5 @@ class PerfilFragment : Fragment() {
         startActivity(intent)
         Toast.makeText(this.activity,"¡Hasta Pronto!", Toast.LENGTH_LONG).show()
     }
+
 }
