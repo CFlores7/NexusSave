@@ -14,13 +14,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_narrow"
-            android:layout_marginEnd="@dimen/margin_narrow"
             android:text="@string/saldo"
             android:textColor="@android:color/black"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/scrollView2"
+            app:layout_constraintEnd_toStartOf="@+id/constraint2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.35" />
@@ -32,7 +31,9 @@
             android:text="@string/dinero_default"
             android:textColor="@android:color/black"
             android:textSize="50sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_saldoDisp"
+            app:layout_constraintEnd_toStartOf="@+id/constraint2"
+            app:layout_constraintHorizontal_bias="0.63"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_saldoDisp" />
 
         <TextView
@@ -43,8 +44,7 @@
             android:textColor="@android:color/black"
             android:textSize="50sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_dinero"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tv_saldoDisp" />
+            app:layout_constraintEnd_toStartOf="@+id/tv_dinero" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddIngreso"
@@ -57,41 +57,56 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="@color/colorHome"
-            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_percent=".6">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_lista_de_ingresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/margin_narrow"
-                android:orientation="vertical">
+                android:layout_gravity="center|top"
+                android:layout_marginTop="16dp"
+                android:text="@string/lista_de_ingresos"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_lista_de_ingresos"
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lista_de_ingresos">
+
+                <LinearLayout
+                    android:id="@+id/linearIngresos"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:text="@string/lista_de_ingresos"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="28sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_margin="@dimen/margin_narrow"
+                    android:gravity="top"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lista_de_ingresos">
 
-
-            </LinearLayout>
-        </ScrollView>
+                </LinearLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

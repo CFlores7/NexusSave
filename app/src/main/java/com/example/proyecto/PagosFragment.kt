@@ -38,6 +38,7 @@ class PagosFragment : Fragment() {
 
         val listCon = binding.llayoutConceptos
         val listEst = binding.llayoutEstados
+        val listFec = binding.llayoutFecha
 
         pagosRef.addSnapshotListener { value, e ->
             if (e != null) {
@@ -46,12 +47,16 @@ class PagosFragment : Fragment() {
 
             val pagoCon = ArrayList<String>()
             val pagoEst = ArrayList<String>()
+            val pagoFec = ArrayList<String>()
             for (doc in value!!) {
                 doc.getString("concepto")?.let {
                     pagoCon.add(it)
                 }
                 doc.getString("estado")?.let {
                     pagoEst.add(it)
+                }
+                doc.getString("fecha")?.let {
+                    pagoFec.add(it)
                 }
             }
 
@@ -65,12 +70,13 @@ class PagosFragment : Fragment() {
             for (i in 0 until pagoCon.size) {
                 val tvCon = TextView(context)
                 val tvEst = TextView(context)
+                val tvFec = TextView(context)
 
                 tvCon.text = pagoCon[i]
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
                 tvCon.layoutParams = params
-                listCon?.addView(tvCon)
+                listCon.addView(tvCon)
 
                 tvEst.text = pagoEst[i]
                 tvEst.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
@@ -81,6 +87,12 @@ class PagosFragment : Fragment() {
                 }
                 tvEst.layoutParams = params
                 listEst?.addView(tvEst)
+
+                tvFec.text = pagoFec[i]
+                tvFec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                tvFec.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvFec.layoutParams = params
+                listFec?.addView(tvFec)
             }
 
         }

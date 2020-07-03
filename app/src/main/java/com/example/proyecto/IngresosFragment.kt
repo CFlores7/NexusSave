@@ -1,5 +1,6 @@
 package com.example.proyecto
 
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.print.PrintAttributes
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.*
 import org.w3c.dom.Text
+import kotlin.math.round
 
 
 /**
@@ -35,7 +37,8 @@ class IngresosFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
     private val ingresosRef = collectionRef.document(userID).collection("ingresos")
-
+    private val gastosRef = collectionRef.document(userID).collection("gastos")
+    private val pagosRef = collectionRef.document(userID).collection("pagos")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +50,11 @@ class IngresosFragment : Fragment() {
             R.layout.fragment_ingresos, container, false)
 
         val list = binding.linearIngresos
-        
+        var total:Double
+        var ingresos: Double
+        var gastos:Double
+        var pagos:Double
+
         ingresosRef.addSnapshotListener { value, e ->
             if (e != null) {
                 return@addSnapshotListener
@@ -74,6 +81,60 @@ class IngresosFragment : Fragment() {
                 list?.addView(tv)
             }
 
+        }
+
+        ingresosRef.addSnapshotListener { value, e ->
+            if (e != null) {
+                return@addSnapshotListener
+            }
+
+            val ingreso = ArrayList<String>()
+            for (doc in value!!) {
+                doc.getString("monto")?.let {
+                    ingreso.add(it)
+                }
+            }
+            ingresos = 0.0
+            for (i in 0 until ingreso.size) {
+                ingresos += ingreso[i].toFloat()
+            }
+            gastosRef.addSnapshotListener { value, e ->
+                if (e != null) {
+                    return@addSnapshotListener
+                }
+
+                val gasto = ArrayList<String>()
+                for (doc in value!!) {
+                    doc.getString("monto")?.let {
+                        gasto.add(it)
+                    }
+                }
+                gastos = 0.0
+                for (i in 0 until gasto.size) {
+                    gastos += gasto[i].toFloat()
+                }
+                pagosRef.addSnapshotListener { value, e ->
+                    if (e != null) {
+                        return@addSnapshotListener
+                    }
+
+
+                    val pago = ArrayList<String>()
+                    for (doc in value!!) {
+                        if(doc.getString("estado").equals("CANCELADO")) {
+                            doc.getString("monto")?.let {
+                                pago.add(it)
+                            }
+                        }
+                    }
+                    pagos = 0.0
+                    for (i in 0 until pago.size) {
+                        pagos += pago[i].toFloat()
+                    }
+                    total = ingresos - gastos - pagos
+                    binding.tvDinero.text = "%.2f".format(total)
+                }
+            }
         }
 
         binding.fabAddIngreso.setOnClickListener{

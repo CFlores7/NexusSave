@@ -32,13 +32,16 @@ class GastosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
+        centerTitle()
+
         val binding = DataBindingUtil.inflate<FragmentGastosBinding>(inflater,
             R.layout.fragment_gastos, container, false)
 
-        centerTitle()
+
 
         val listCon = binding.llayoutConceptos
         val listMon = binding.llayoutMonto
+        val listFec = binding.llayoutFecha
 
         gastosRef.addSnapshotListener { value, e ->
             if (e != null) {
@@ -47,12 +50,16 @@ class GastosFragment : Fragment() {
 
             val gastosCon = ArrayList<String>()
             val gastosMon = ArrayList<String>()
+            val gastosFec = ArrayList<String>()
             for (doc in value!!) {
                 doc.getString("concepto")?.let {
                     gastosCon.add(it)
                 }
                 doc.getString("monto")?.let {
                     gastosMon.add(it)
+                }
+                doc.getString("fecha")?.let {
+                    gastosFec.add(it)
                 }
             }
 
@@ -66,6 +73,7 @@ class GastosFragment : Fragment() {
             for (i in 0 until gastosCon.size) {
                 val tvCon = TextView(context)
                 val tvMon = TextView(context)
+                val tvFec = TextView(context)
 
                 tvCon.text = gastosCon[i]
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
@@ -75,9 +83,15 @@ class GastosFragment : Fragment() {
 
                 tvMon.text = "$" + gastosMon[i]
                 tvMon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvMon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvMon.setTextColor(getResources().getColor(R.color.colorRed))
                 tvMon.layoutParams = params
                 listMon?.addView(tvMon)
+
+                tvFec.text = gastosFec[i]
+                tvFec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                tvFec.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvFec.layoutParams = params
+                listFec?.addView(tvFec)
             }
 
         }

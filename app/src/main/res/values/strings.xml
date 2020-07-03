@@ -62,5 +62,6 @@
     <string name="fechaLimitePago">Fecha limite de pago</string>
     <string name="ivApp">logoApp</string>
     <string name="estadisticas">Estadisticas</string>
+    <string name="ultimos_gastos">Ultimos Gastos:</string>
 
 </resources>

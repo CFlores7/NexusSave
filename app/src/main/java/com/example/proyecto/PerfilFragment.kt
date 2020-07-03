@@ -31,7 +31,8 @@ class PerfilFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
+        //Setting Title
+        (activity as AppCompatActivity).supportActionBar?.title = ""
         (activity as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
 
         val binding = DataBindingUtil.inflate<FragmentPerfilBinding>(inflater,

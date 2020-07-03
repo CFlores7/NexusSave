@@ -26,12 +26,12 @@
             android:id="@+id/tv_dollar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:text="@string/dollar_sign"
             android:textColor="@android:color/black"
             android:textSize="50sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_dinero"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tv_saldoDisp" />
+            app:layout_constraintEnd_toStartOf="@+id/tv_dinero" />
 
         <TextView
             android:id="@+id/tv_dinero"
@@ -41,7 +41,9 @@
             android:textColor="@android:color/black"
             android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_saldoDisp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

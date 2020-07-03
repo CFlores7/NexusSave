@@ -16,7 +16,7 @@
         android:layout_marginStart="@dimen/margin_narrow"
         android:layout_marginTop="@dimen/margin_narrow"
         android:layout_marginEnd="@dimen/margin_narrow"
-        android:text="Ultimos Gastos:"
+        android:text="@string/ultimos_gastos"
         android:textColor="@color/colorTextBlack"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +66,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Membresia"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="20sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -87,12 +80,6 @@
                 app:layout_constraintStart_toEndOf="@+id/llayoutConceptos"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$25"
-                    android:textColor="@color/colorTextBlack"
-                    android:textSize="20sp" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

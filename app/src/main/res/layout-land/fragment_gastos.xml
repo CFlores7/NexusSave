@@ -16,7 +16,7 @@
             android:layout_marginStart="@dimen/margin_narrow"
             android:layout_marginTop="@dimen/margin_narrow"
             android:layout_marginEnd="@dimen/margin_narrow"
-            android:text="Ultimos Gastos:"
+            android:text="@string/ultimos_gastos"
             android:textColor="@color/colorTextBlack"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,22 +61,15 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/llayoutEstados"
+                    app:layout_constraintEnd_toStartOf="@+id/llayoutMonto"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Membresia"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="20sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
-                android:id="@+id/llayoutEstados"
+                android:id="@+id/llayoutMonto"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
@@ -87,12 +80,6 @@
                 app:layout_constraintStart_toEndOf="@+id/llayoutConceptos"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$25"
-                    android:textColor="@color/colorRed"
-                    android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,15 +91,9 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/llayoutEstados"
+                    app:layout_constraintStart_toEndOf="@+id/llayoutMonto"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15/04/20"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="20sp" />
                     </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
