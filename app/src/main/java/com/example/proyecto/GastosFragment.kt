@@ -79,6 +79,13 @@ class GastosFragment : Fragment() {
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
                 tvCon.layoutParams = params
+
+                tvCon.setOnClickListener {
+                    val amountTv  = tvCon
+                    val amount = amountTv.text.toString()
+                    val action = GastosFragmentDirections.actionGastosFragmentToVerGastoFragment(amount)
+                    it.findNavController().navigate(action)
+                }
                 listCon?.addView(tvCon)
 
                 tvMon.text = "$" + gastosMon[i]

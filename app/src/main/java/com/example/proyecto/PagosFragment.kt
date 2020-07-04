@@ -76,6 +76,12 @@ class PagosFragment : Fragment() {
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
                 tvCon.layoutParams = params
+                tvCon.setOnClickListener {
+                    val amountTv  = tvCon
+                    val amount = amountTv.text.toString()
+                    val action = PagosFragmentDirections.actionPagosFragmentToVerPagoFragment(amount)
+                    it.findNavController().navigate(action)
+                }
                 listCon.addView(tvCon)
 
                 tvEst.text = pagoEst[i]

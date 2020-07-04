@@ -5,18 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.proyecto.databinding.FragmentVerIngresoBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  */
 class VerIngresoFragment : Fragment() {
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val db = FirebaseFirestore.getInstance()
+    private val collectionRef = db.collection("users")
+    private val ingresosRef = collectionRef.document(userID).collection("ingresos")
+    val args: VerIngresoFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +38,7 @@ class VerIngresoFragment : Fragment() {
         centerTitle()
 
         binding.btRegresar.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_verIngresoFragment_to_ingresosFragment)
+            activity!!.onBackPressed()
         }
 
         return binding.root
@@ -37,8 +46,33 @@ class VerIngresoFragment : Fragment() {
     //Setting Title
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val tvCon: TextView = view.findViewById(R.id.tvConceptoIngreso)
+        val tvCan: TextView = view.findViewById(R.id.tvCantidadIngreso)
+        val tvFec: TextView = view.findViewById(R.id.tvFechaIngreso)
+        val amount = args.concepto
+        tvCon.text = amount
+
+        ingresosRef.whereEqualTo("concepto", amount)
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    return@addSnapshotListener
+                }
+
+                var cantidad = ""
+                var fecha = ""
+                for (doc in value!!) {
+                    doc.getString("monto")?.let {
+                        cantidad = it
+                    }
+                    doc.getString("fecha")?.let {
+                        fecha = it
+                    }
+                }
+                tvCan.text = "$" + cantidad
+                tvFec.text = fecha
 
         (activity as AppCompatActivity).supportActionBar?.title = "INGRESO"
+    }
     }
     //Centrar texto en ActionBar
     private fun centerTitle() {

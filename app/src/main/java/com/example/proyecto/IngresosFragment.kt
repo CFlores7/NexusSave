@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginBottom
@@ -78,6 +79,12 @@ class IngresosFragment : Fragment() {
                 tv.setTextColor(getResources().getColor(R.color.colorTextBlack))
                 tv.layoutParams = params
                 //binding.tvIngresos?.append(ingresos[i])
+                tv.setOnClickListener {
+                    val amountTv  = tv
+                    val amount = amountTv.text.toString()
+                    val action = IngresosFragmentDirections.actionIngresosFragmentToVerIngresoFragment(amount)
+                    it.findNavController().navigate(action)
+                }
                 list?.addView(tv)
             }
 

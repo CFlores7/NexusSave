@@ -111,6 +111,10 @@
         <action
             android:id="@+id/action_verIngresoFragment_to_ingresosFragment"
             app:destination="@id/ingresosFragment" />
+        <argument
+            android:name="concepto"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/verGastoFragment"
@@ -120,6 +124,10 @@
         <action
             android:id="@+id/action_verGastoFragment_to_gastosFragment"
             app:destination="@id/gastosFragment" />
+        <argument
+            android:name="concepto"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/verPagoFragment"
@@ -129,6 +137,10 @@
         <action
             android:id="@+id/action_verPagoFragment_to_pagosFragment"
             app:destination="@id/pagosFragment" />
+        <argument
+            android:name="concepto"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/estadisticasFragment"

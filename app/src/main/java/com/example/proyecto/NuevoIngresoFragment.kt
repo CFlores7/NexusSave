@@ -14,6 +14,11 @@ import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentNuevoIngresoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 /**
  * A simple [Fragment] subclass.
@@ -71,10 +76,13 @@ class NuevoIngresoFragment : Fragment() {
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
             .collection("ingresos")
+        val calendar = Calendar.getInstance()
+        val currentDate = DateFormat.getDateInstance().format(calendar.time)
 
         val ingreso = HashMap<String, Any>()
         ingreso["concepto"] = concepto
         ingreso["monto"] = monto
+        ingreso["fecha"] = currentDate
 
         documentReference.add(ingreso)
 
