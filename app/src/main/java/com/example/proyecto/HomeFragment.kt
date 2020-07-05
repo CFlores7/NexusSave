@@ -67,7 +67,6 @@ class HomeFragment : Fragment() {
             for (i in 0 until ingreso.size) {
                 ingresos += ingreso[i].toFloat()
             }
-            //ingresos = round(ingresos*100) /100
             gastosRef.addSnapshotListener { value, e ->
                 if (e != null) {
                     return@addSnapshotListener
@@ -102,8 +101,6 @@ class HomeFragment : Fragment() {
                     for (i in 0 until pago.size) {
                         pagos += pago[i].toFloat()
                     }
-                    //pagos = round(pagos * 100) /100
-                    Log.d(ContentValues.TAG, pagos.toString())
                     total = ingresos - gastos - pagos
                     binding.tvDinero.text = "%.2f".format(total)
                 }

@@ -1,12 +1,16 @@
 package com.example.proyecto
 
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -15,7 +19,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.proyecto.databinding.FragmentVerPagoBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_ver_pago.view.*
 import java.util.ArrayList
 
 /**
@@ -25,7 +31,8 @@ class VerPagoFragment : Fragment() {
     private val userID = FirebaseAuth.getInstance().currentUser!!.uid
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
-    private val gastosRef = collectionRef.document(userID).collection("pagos")
+    private val pagosRef = collectionRef.document(userID).collection("pagos")
+    private var mContext: Context? = null
     val args: VerPagoFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -34,10 +41,40 @@ class VerPagoFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentVerPagoBinding>(inflater,
             R.layout.fragment_ver_pago, container, false)
+        val amount = args.concepto
+        var docID: String = ""
 
         centerTitle()
 
+        binding.btBorrar.setOnClickListener {
+            pagosRef.whereEqualTo("concepto", amount).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        docID = document.id
+                    }
+                    pagosRef.document(docID).delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(mContext,"¡Pago eliminado con exito!", Toast.LENGTH_LONG).show()
+                        }
+                }
+            activity!!.onBackPressed()
+        }
+
         binding.btRegresar.setOnClickListener {
+            pagosRef.whereEqualTo("concepto", amount).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        docID = document.id
+                    }
+                    val pago = HashMap<String, Any>()
+                    if (binding.rbCancelado.isChecked){
+                        pago["estado"] = "CANCELADO"
+                    } else {
+                        pago["estado"] = "PENDIENTE"
+                    }
+                    pagosRef.document(docID).update(pago)
+                }
+
             activity!!.onBackPressed()
         }
 
@@ -54,7 +91,7 @@ class VerPagoFragment : Fragment() {
         val amount = args.concepto
         tvCon.text = amount
 
-        gastosRef.whereEqualTo("concepto", amount)
+        pagosRef.whereEqualTo("concepto", amount)
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     return@addSnapshotListener
@@ -83,8 +120,7 @@ class VerPagoFragment : Fragment() {
                 }else{
                     rbPen.isChecked = true
                 }
-
-        (activity as AppCompatActivity).supportActionBar?.title = "PAGO"
+        //(activity as AppCompatActivity).supportActionBar?.title = "PAGO"
     }}
     //Centrar texto en ActionBar
     private fun centerTitle() {
@@ -109,5 +145,9 @@ class VerPagoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

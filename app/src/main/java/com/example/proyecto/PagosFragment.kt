@@ -1,22 +1,22 @@
 package com.example.proyecto
 
+import android.content.Context
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.proyecto.databinding.FragmentPagosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +26,7 @@ class PagosFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
     private val pagosRef = collectionRef.document(userID).collection("pagos")
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,14 +68,20 @@ class PagosFragment : Fragment() {
             params.setMargins(0, 16, 0, 16)
             params.gravity = Gravity.CENTER
 
+            if(listCon.childCount > 0 ){
+                listCon.removeAllViews()
+                listEst.removeAllViews()
+                listFec?.removeAllViews()
+            }
+
             for (i in 0 until pagoCon.size) {
-                val tvCon = TextView(context)
-                val tvEst = TextView(context)
-                val tvFec = TextView(context)
+                val tvCon = TextView(mContext)
+                val tvEst = TextView(mContext)
+                val tvFec = TextView(mContext)
 
                 tvCon.text = pagoCon[i]
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvCon.setTextColor(mContext!!.getResources().getColor(R.color.colorTextBlack))
                 tvCon.layoutParams = params
                 tvCon.setOnClickListener {
                     val amountTv  = tvCon
@@ -87,16 +94,16 @@ class PagosFragment : Fragment() {
                 tvEst.text = pagoEst[i]
                 tvEst.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 if (tvEst.text.equals("PENDIENTE")){
-                    tvEst.setTextColor(getResources().getColor(R.color.colorRed))
+                    tvEst.setTextColor(mContext!!.getResources().getColor(R.color.colorRed))
                 } else if(tvEst.text.equals("CANCELADO")){
-                    tvEst.setTextColor(getResources().getColor(R.color.colorGreen))
+                    tvEst.setTextColor(mContext!!.getResources().getColor(R.color.colorGreen))
                 }
                 tvEst.layoutParams = params
                 listEst?.addView(tvEst)
 
                 tvFec.text = pagoFec[i]
                 tvFec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvFec.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvFec.setTextColor(mContext!!.getResources().getColor(R.color.colorTextBlack))
                 tvFec.layoutParams = params
                 listFec?.addView(tvFec)
             }
@@ -111,4 +118,8 @@ class PagosFragment : Fragment() {
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
+    }
 }

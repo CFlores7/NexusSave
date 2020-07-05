@@ -75,13 +75,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mensualidad"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="20sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -96,12 +89,6 @@
                     app:layout_constraintStart_toEndOf="@+id/llayoutConceptos"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CANCELADO"
-                        android:textColor="@color/colorGreen"
-                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

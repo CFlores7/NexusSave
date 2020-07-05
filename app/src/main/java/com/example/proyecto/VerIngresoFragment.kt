@@ -1,11 +1,13 @@
 package com.example.proyecto
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -26,6 +28,7 @@ class VerIngresoFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
     private val ingresosRef = collectionRef.document(userID).collection("ingresos")
+    private var mContext: Context? = null
     val args: VerIngresoFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -34,8 +37,24 @@ class VerIngresoFragment : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentVerIngresoBinding>(inflater,
             R.layout.fragment_ver_ingreso, container, false)
+        val amount = args.concepto
+        var docID: String = ""
 
         centerTitle()
+
+        binding.btBorrar.setOnClickListener {
+            ingresosRef.whereEqualTo("concepto", amount).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        docID = document.id
+                    }
+                    ingresosRef.document(docID).delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(mContext,"¡Ingreso eliminado con exito!", Toast.LENGTH_LONG).show()
+                        }
+                }
+            activity!!.onBackPressed()
+        }
 
         binding.btRegresar.setOnClickListener {
             activity!!.onBackPressed()
@@ -70,8 +89,6 @@ class VerIngresoFragment : Fragment() {
                 }
                 tvCan.text = "$" + cantidad
                 tvFec.text = fecha
-
-        (activity as AppCompatActivity).supportActionBar?.title = "INGRESO"
     }
     }
     //Centrar texto en ActionBar
@@ -97,5 +114,9 @@ class VerIngresoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

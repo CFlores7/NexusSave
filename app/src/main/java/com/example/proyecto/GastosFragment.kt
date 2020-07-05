@@ -1,5 +1,6 @@
 package com.example.proyecto
 
+import android.content.Context
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
@@ -26,6 +27,7 @@ class GastosFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
     private val gastosRef = collectionRef.document(userID).collection("gastos")
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,14 +72,20 @@ class GastosFragment : Fragment() {
             params.setMargins(0, 16, 0, 16)
             params.gravity = Gravity.CENTER
 
+            if(listCon.childCount > 0 ){
+                listCon.removeAllViews()
+                listMon.removeAllViews()
+                listFec?.removeAllViews()
+            }
+
             for (i in 0 until gastosCon.size) {
-                val tvCon = TextView(context)
-                val tvMon = TextView(context)
-                val tvFec = TextView(context)
+                val tvCon = TextView(mContext)
+                val tvMon = TextView(mContext)
+                val tvFec = TextView(mContext)
 
                 tvCon.text = gastosCon[i]
                 tvCon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvCon.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvCon.setTextColor(mContext!!.getResources().getColor(R.color.colorTextBlack))
                 tvCon.layoutParams = params
 
                 tvCon.setOnClickListener {
@@ -90,13 +98,13 @@ class GastosFragment : Fragment() {
 
                 tvMon.text = "$" + gastosMon[i]
                 tvMon.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvMon.setTextColor(getResources().getColor(R.color.colorRed))
+                tvMon.setTextColor(mContext!!.getResources().getColor(R.color.colorRed))
                 tvMon.layoutParams = params
                 listMon?.addView(tvMon)
 
                 tvFec.text = gastosFec[i]
                 tvFec.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
-                tvFec.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tvFec.setTextColor(mContext!!.getResources().getColor(R.color.colorTextBlack))
                 tvFec.layoutParams = params
                 listFec?.addView(tvFec)
             }
@@ -133,5 +141,9 @@ class GastosFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

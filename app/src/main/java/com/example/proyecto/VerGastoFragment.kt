@@ -1,11 +1,13 @@
 package com.example.proyecto
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -25,16 +27,35 @@ class VerGastoFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
     private val gastosRef = collectionRef.document(userID).collection("gastos")
+    private var mContext: Context? = null
     val args: VerGastoFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
+
         val binding = DataBindingUtil.inflate<FragmentVerGastoBinding>(inflater,
             R.layout.fragment_ver_gasto, container, false)
+        val amount = args.concepto
+        var docID: String = ""
 
         centerTitle()
+
+        binding.btBorrar.setOnClickListener {
+            gastosRef.whereEqualTo("concepto", amount).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        docID = document.id
+                    }
+                    gastosRef.document(docID).delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(mContext,"¡Gasto eliminado con exito!", Toast.LENGTH_LONG).show()
+                        }
+                }
+            activity!!.onBackPressed()
+        }
 
         binding.btRegresar.setOnClickListener {
             activity!!.onBackPressed()
@@ -71,7 +92,7 @@ class VerGastoFragment : Fragment() {
                 tvFec.text = fecha
 
 
-        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
+
     }}
     //Centrar texto en ActionBar
     private fun centerTitle() {
@@ -96,5 +117,9 @@ class VerGastoFragment : Fragment() {
                 appCompatTextView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
         }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

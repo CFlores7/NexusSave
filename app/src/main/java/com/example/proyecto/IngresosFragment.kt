@@ -2,6 +2,7 @@ package com.example.proyecto
 
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.print.PrintAttributes
 import android.provider.ContactsContract.CommonDataKinds.Note
@@ -40,6 +41,7 @@ class IngresosFragment : Fragment() {
     private val ingresosRef = collectionRef.document(userID).collection("ingresos")
     private val gastosRef = collectionRef.document(userID).collection("gastos")
     private val pagosRef = collectionRef.document(userID).collection("pagos")
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,13 +74,17 @@ class IngresosFragment : Fragment() {
             params.setMargins(0, 16, 0, 16)
             params.gravity = Gravity.CENTER
 
+            if(list.childCount > 0 ){
+                list.removeAllViews()
+            }
+
             for (i in 0 until ingresos.size) {
-                val tv = TextView(context)
+                val tv = TextView(mContext)
                 tv.text = ingresos[i]
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24F)
-                tv.setTextColor(getResources().getColor(R.color.colorTextBlack))
+                tv.setTextColor(mContext!!.getResources().getColor(R.color.colorTextBlack))
                 tv.layoutParams = params
-                //binding.tvIngresos?.append(ingresos[i])
+
                 tv.setOnClickListener {
                     val amountTv  = tv
                     val amount = amountTv.text.toString()
@@ -150,5 +156,9 @@ class IngresosFragment : Fragment() {
         }
 
         return binding.root
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }
