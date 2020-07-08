@@ -3,6 +3,7 @@ package com.example.proyecto
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -34,6 +35,7 @@ import kotlin.collections.HashMap
  * A simple [Fragment] subclass.
  */
 class SignUpFragment : Fragment() {
+    private var mContext: Context? = null
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -60,7 +62,7 @@ class SignUpFragment : Fragment() {
         }
         binding.btnCrear.setOnClickListener {
             if(binding.etPass.length()<8){
-                Toast.makeText(this.activity, "Contraseña debe tener mas de 8 caracteres",
+                Toast.makeText(mContext, "Contraseña debe tener mas de 8 caracteres",
                     Toast.LENGTH_LONG).show()
             }
             if(binding.etPass.text.toString().equals(binding.etConfPass.text.toString())){
@@ -68,7 +70,7 @@ class SignUpFragment : Fragment() {
                             binding.etPass.text.toString(), binding.etCiudad.text.toString(),
                     binding.spPais.selectedItem.toString(), binding.etFechaNaci.text.toString())
             }else{
-                Toast.makeText(this.activity, "Passwords doesn't match", Toast.LENGTH_LONG).show()
+                Toast.makeText(mContext, "Contraseñas no coinciden", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -98,7 +100,7 @@ class SignUpFragment : Fragment() {
 
     private fun registrarUsuario(fullname:String, email: String, password: String, ciudad: String, pais: String, fechaNac: String){
         if(TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
-            Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
+            Toast.makeText(mContext, "Ingrese texto en email/contraseña", Toast.LENGTH_LONG).show()
             return
         }
 
@@ -115,10 +117,14 @@ class SignUpFragment : Fragment() {
                 user["pais"] = pais
                 user["birth"] = fechaNac
                 documentReference.set(user)
-                Toast.makeText(this.activity, "Usuario creado correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(mContext, "Usuario creado correctamente", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {
-                Toast.makeText(this.activity, "Error al crear el usuario", Toast.LENGTH_LONG).show()
+                Toast.makeText(mContext, "Error al crear el usuario", Toast.LENGTH_LONG).show()
             }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

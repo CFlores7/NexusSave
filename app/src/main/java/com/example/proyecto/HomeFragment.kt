@@ -202,8 +202,8 @@ class HomeFragment : Fragment() {
                             .content("Tienes ${i} dias antes del limite de pago de ${pagoCon[x]}")
                             .time(cal)
                             .key("${pagoCon[x]}")
-                            .addAction(notificationIntent, "Dismiss", true, false)
-                            .addAction(notificationIntent, "Done")
+                            .addAction(notificationIntent, "Descartar", true, false)
+                            .addAction(notificationIntent, "Entendido")
                             .large_icon(R.mipmap.ic_launcher_round)
                             .build()
                     }

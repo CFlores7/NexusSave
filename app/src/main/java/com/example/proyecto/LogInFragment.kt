@@ -1,6 +1,7 @@
 package com.example.proyecto
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
  * A simple [Fragment] subclass.
  */
 class LogInFragment : Fragment() {
+    private var mContext: Context? = null
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -43,7 +45,7 @@ class LogInFragment : Fragment() {
     }
     private fun ingresar(email: String, password: String){
         if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
-            Toast.makeText(this.activity, "Please enter text in email/pass", Toast.LENGTH_LONG).show()
+            Toast.makeText(mContext, "Ingrese texto en email/contraseña", Toast.LENGTH_LONG).show()
             return
         }
 
@@ -53,10 +55,14 @@ class LogInFragment : Fragment() {
                 val intent = Intent(this.context, ActivityMain::class.java)
                 this.activity!!.finish()
                 startActivity(intent)
-                Toast.makeText(this.activity,"¡Bienvenido!", Toast.LENGTH_LONG).show()
+                Toast.makeText(mContext,"¡Bienvenido!", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {
-                Toast.makeText(this.activity, "Correo o contraseña incorrecta", Toast.LENGTH_LONG).show()
+                Toast.makeText(mContext, "Correo o contraseña incorrecta", Toast.LENGTH_LONG).show()
             }
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }
