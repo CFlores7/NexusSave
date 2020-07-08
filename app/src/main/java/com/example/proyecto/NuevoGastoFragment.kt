@@ -1,9 +1,11 @@
 package com.example.proyecto
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +29,7 @@ import java.util.*
  * A simple [Fragment] subclass.
  */
 class NuevoGastoFragment : Fragment() {
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +55,16 @@ class NuevoGastoFragment : Fragment() {
         }
 
         binding.btAgregar.setOnClickListener {
-            agregarGasto(binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
-                            binding.etFecha.text.toString())
-            activity!!.onBackPressed()
+            if(TextUtils.isEmpty(binding.etConcepto.text)|| TextUtils.isEmpty(binding.etMonto.text)
+                || TextUtils.isEmpty(binding.etFecha.text)){
+                Toast.makeText(mContext, "Debe completar los campos", Toast.LENGTH_LONG).show()
+            } else {
+                agregarGasto(
+                    binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
+                    binding.etFecha.text.toString()
+                )
+                activity!!.onBackPressed()
+            }
         }
 
         return binding.root
@@ -119,6 +129,10 @@ class NuevoGastoFragment : Fragment() {
 
         documentReference.add(gasto)
 
-        Toast.makeText(this.activity, "Gasto agregado correctamente", Toast.LENGTH_LONG).show()
+        Toast.makeText(mContext, "Gasto agregado correctamente", Toast.LENGTH_LONG).show()
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

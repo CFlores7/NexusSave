@@ -34,7 +34,7 @@ class VerGastoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = "GASTOS"
+        (activity as AppCompatActivity).supportActionBar?.title = "DETALLE GASTO"
 
         val binding = DataBindingUtil.inflate<FragmentVerGastoBinding>(inflater,
             R.layout.fragment_ver_gasto, container, false)

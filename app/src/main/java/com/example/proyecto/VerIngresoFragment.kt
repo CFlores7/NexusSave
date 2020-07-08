@@ -35,6 +35,7 @@ class VerIngresoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "DETALLE INGRESO"
         val binding = DataBindingUtil.inflate<FragmentVerIngresoBinding>(inflater,
             R.layout.fragment_ver_ingreso, container, false)
         val amount = args.concepto

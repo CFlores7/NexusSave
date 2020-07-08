@@ -61,6 +61,9 @@ dependencies {
     //MPAndroidCharts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    //Notifications NotifyMe
+    implementation 'com.github.jakebonk:NotifyMe:1.0.1'
+
     implementation "com.google.android.material:material:$supportlibVersion"
 
     implementation 'androidx.core:core-ktx:1.2.0'

@@ -1,20 +1,27 @@
 package com.example.proyecto
 
 import android.app.DatePickerDialog
+import android.app.Notification
+import android.app.PendingIntent
+import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.allyants.notifyme.NotifyMe
 import com.example.proyecto.databinding.FragmentNuevoPagoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +34,11 @@ import javax.xml.datatype.DatatypeConstants.MONTHS
  * A simple [Fragment] subclass.
  */
 class NuevoPagoFragment : Fragment() {
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val db = FirebaseFirestore.getInstance()
+    private val collectionRef = db.collection("users")
+    private val pagosRef = collectionRef.document(userID).collection("pagos")
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +60,17 @@ class NuevoPagoFragment : Fragment() {
         }
 
         binding.btAgregar.setOnClickListener {
-            agregarPago(binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
-                        binding.etFecha.text.toString())
+            if(TextUtils.isEmpty(binding.etConcepto.text) || TextUtils.isEmpty(binding.etMonto.text)
+                ||TextUtils.isEmpty(binding.etFecha.text)){
+                Toast.makeText(mContext, "Debe completar los campos", Toast.LENGTH_LONG).show()
+            } else {
+                agregarPago(
+                    binding.etConcepto.text.toString(), binding.etMonto.text.toString(),
+                    binding.etFecha.text.toString()
+                )
 
-            activity!!.onBackPressed()
+                activity!!.onBackPressed()
+            }
         }
 
         return binding.root
@@ -66,9 +85,9 @@ class NuevoPagoFragment : Fragment() {
         val dpd = DatePickerDialog(
             activity as AppCompatActivity,
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
+                val mes = monthOfYear + 1
                 // Display Selected date in textbox
-                etFecha.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
+                etFecha.setText("" + dayOfMonth + "/" + mes + "/" + year)
             },
             year,
             month,
@@ -116,6 +135,10 @@ class NuevoPagoFragment : Fragment() {
 
         documentReference.add(pago)
 
-        Toast.makeText(this.activity, "Pago agregado correctamente", Toast.LENGTH_LONG).show()
+        Toast.makeText(mContext, "Pago agregado correctamente", Toast.LENGTH_LONG).show()
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

@@ -39,6 +39,8 @@ class VerPagoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = "DETALLE PAGO"
+
         val binding = DataBindingUtil.inflate<FragmentVerPagoBinding>(inflater,
             R.layout.fragment_ver_pago, container, false)
         val amount = args.concepto

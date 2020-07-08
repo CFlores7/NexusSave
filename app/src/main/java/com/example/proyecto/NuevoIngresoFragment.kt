@@ -1,6 +1,8 @@
 package com.example.proyecto
 
+import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +26,7 @@ import kotlin.collections.HashMap
  * A simple [Fragment] subclass.
  */
 class NuevoIngresoFragment : Fragment() {
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +44,12 @@ class NuevoIngresoFragment : Fragment() {
         }
 
         binding.btAgregar.setOnClickListener {
-            agregarIngreso(binding.etConcepto.text.toString(), binding.etMonto.text.toString())
-            activity!!.onBackPressed()
+            if(TextUtils.isEmpty(binding.etConcepto.text) || TextUtils.isEmpty(binding.etMonto.text)){
+                Toast.makeText(mContext, "Debe completar los campos", Toast.LENGTH_LONG).show()
+            } else {
+                agregarIngreso(binding.etConcepto.text.toString(), binding.etMonto.text.toString())
+                activity!!.onBackPressed()
+            }
         }
 
         return binding.root
@@ -86,6 +93,10 @@ class NuevoIngresoFragment : Fragment() {
 
         documentReference.add(ingreso)
 
-        Toast.makeText(this.activity, "Ingreso agregado correctamente", Toast.LENGTH_LONG).show()
+        Toast.makeText(mContext, "Ingreso agregado correctamente", Toast.LENGTH_LONG).show()
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }

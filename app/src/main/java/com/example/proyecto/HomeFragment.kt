@@ -2,6 +2,8 @@ package com.example.proyecto
 
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -14,12 +16,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.allyants.notifyme.NotifyMe
 import com.example.proyecto.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_perfil.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.round
 
 /**
@@ -32,6 +37,7 @@ class HomeFragment : Fragment() {
     private val ingresosRef = collectionRef.document(userID).collection("ingresos")
     private val gastosRef = collectionRef.document(userID).collection("gastos")
     private val pagosRef = collectionRef.document(userID).collection("pagos")
+    private var mContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,7 +88,7 @@ class HomeFragment : Fragment() {
                 for (i in 0 until gasto.size) {
                     gastos += gasto[i].toFloat()
                 }
-                //gastos = round(gastos*100) /100
+
                 pagosRef.addSnapshotListener { value, e ->
                     if (e != null) {
                         return@addSnapshotListener
@@ -146,5 +152,10 @@ class HomeFragment : Fragment() {
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 }
