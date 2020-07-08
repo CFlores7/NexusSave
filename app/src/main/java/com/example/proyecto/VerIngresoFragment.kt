@@ -49,7 +49,9 @@ class VerIngresoFragment : Fragment() {
                     for (document in documents){
                         docID = document.id
                     }
-                    ingresosRef.document(docID).delete()
+                    val ingreso = HashMap<String, Any>()
+                    ingreso["eliminado"] = true
+                    ingresosRef.document(docID).update(ingreso)
                         .addOnSuccessListener {
                             Toast.makeText(mContext,"¡Ingreso eliminado con exito!", Toast.LENGTH_LONG).show()
                         }

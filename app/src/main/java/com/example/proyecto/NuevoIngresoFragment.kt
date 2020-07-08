@@ -80,6 +80,7 @@ class NuevoIngresoFragment : Fragment() {
     }
 
     private fun agregarIngreso(concepto: String, monto: String){
+        val eliminado = false
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
             .collection("ingresos")
@@ -90,6 +91,7 @@ class NuevoIngresoFragment : Fragment() {
         ingreso["concepto"] = concepto
         ingreso["monto"] = monto
         ingreso["fecha"] = currentDate
+        ingreso["eliminado"] = eliminado
 
         documentReference.add(ingreso)
 

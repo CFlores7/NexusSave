@@ -154,6 +154,73 @@ class HomeFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val cal = Calendar.getInstance()
+        var year = 0
+        var month = 0
+        var day = 0
+        val notificationIntent = Intent(mContext, HomeFragment::class.java)
+
+        pagosRef.whereEqualTo("estado", "PENDIENTE")
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    return@addSnapshotListener
+                }
+                val pagoCon = java.util.ArrayList<String>()
+                val pagoFec = java.util.ArrayList<String>()
+                for (doc in value!!) {
+                    doc.getString("concepto")?.let {
+                        pagoCon.add(it)
+                    }
+                    doc.getString("fecha")?.let {
+                        pagoFec.add(it)
+                    }
+                }
+
+                for (x in 0 until pagoCon.size) {
+                    val separated = pagoFec[x].split("/")
+
+                    cal.get(Calendar.YEAR)
+                    cal.get(Calendar.MONTH)
+                    cal.get(Calendar.DAY_OF_MONTH)
+
+                    for (i in 5 downTo 1 step 2) {
+                        year = separated[2].toInt()
+                        month = separated[1].toInt() - 1
+                        day = separated[0].toInt() - i
+                        cal.set(Calendar.YEAR, year)
+                        cal.set(Calendar.MONTH, month)
+                        cal.set(Calendar.DAY_OF_MONTH, day)
+
+                        cal.set(Calendar.HOUR_OF_DAY, 10)
+                        cal.set(Calendar.MINUTE, 0)
+                        cal.set(Calendar.SECOND, 0)
+
+                        NotifyMe.Builder(mContext)
+                            .title("Pago pendiente")
+                            .content("Tienes ${i} dias antes del limite de pago de ${pagoCon[x]}")
+                            .time(cal)
+                            .key("${pagoCon[x]}")
+                            .addAction(notificationIntent, "Dismiss", true, false)
+                            .addAction(notificationIntent, "Done")
+                            .large_icon(R.mipmap.ic_launcher_round)
+                            .build()
+                    }
+                }
+                pagosRef.whereEqualTo("estado", "CANCELADO")
+                    .addSnapshotListener { value, e ->
+                        if (e != null) {
+                            return@addSnapshotListener
+                        }
+
+                        for (x in 0 until pagoCon.size) {
+                            NotifyMe.cancel(mContext,"${pagoCon[x]}")
+                        }
+                    }
+            }
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context

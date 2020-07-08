@@ -54,14 +54,16 @@ class GastosFragment : Fragment() {
             val gastosMon = ArrayList<String>()
             val gastosFec = ArrayList<String>()
             for (doc in value!!) {
-                doc.getString("concepto")?.let {
-                    gastosCon.add(it)
-                }
-                doc.getString("monto")?.let {
-                    gastosMon.add(it)
-                }
-                doc.getString("fecha")?.let {
-                    gastosFec.add(it)
+                if(doc.getBoolean("eliminado") != true) {
+                    doc.getString("concepto")?.let {
+                        gastosCon.add(it)
+                    }
+                    doc.getString("monto")?.let {
+                        gastosMon.add(it)
+                    }
+                    doc.getString("fecha")?.let {
+                        gastosFec.add(it)
+                    }
                 }
             }
 

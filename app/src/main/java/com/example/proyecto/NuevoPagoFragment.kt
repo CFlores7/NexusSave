@@ -123,6 +123,7 @@ class NuevoPagoFragment : Fragment() {
 
     private fun agregarPago(concepto: String, monto: String, fecha: String){
         val estado = "PENDIENTE"
+        val eliminado = false
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
             .collection("pagos")
@@ -132,6 +133,7 @@ class NuevoPagoFragment : Fragment() {
         pago["monto"] = monto
         pago["fecha"] = fecha
         pago["estado"] = estado
+        pago["eliminado"] = eliminado
 
         documentReference.add(pago)
 

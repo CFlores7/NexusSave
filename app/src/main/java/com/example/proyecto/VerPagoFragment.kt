@@ -54,7 +54,9 @@ class VerPagoFragment : Fragment() {
                     for (document in documents){
                         docID = document.id
                     }
-                    pagosRef.document(docID).delete()
+                    val pago = HashMap<String, Any>()
+                    pago["eliminado"] = true
+                    pagosRef.document(docID).update(pago)
                         .addOnSuccessListener {
                             Toast.makeText(mContext,"¡Pago eliminado con exito!", Toast.LENGTH_LONG).show()
                         }

@@ -65,8 +65,10 @@ class IngresosFragment : Fragment() {
 
             val ingresos = ArrayList<String>()
             for (doc in value!!) {
-                doc.getString("concepto")?.let {
-                    ingresos.add(it)
+                if (doc.getBoolean("eliminado") != true) {
+                    doc.getString("concepto")?.let {
+                        ingresos.add(it)
+                    }
                 }
             }
 

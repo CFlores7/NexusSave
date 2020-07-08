@@ -80,9 +80,9 @@ class NuevoGastoFragment : Fragment() {
         val dpd = DatePickerDialog(
             activity as AppCompatActivity, android.R.style.Theme_Material_Dialog_MinWidth,
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
+                val mes = monthOfYear + 1
                 // Display Selected date in textbox
-                etFecha.setText("" + dayOfMonth + "/" + monthOfYear + "/" + year)
+                etFecha.setText("" + dayOfMonth + "/" + mes + "/" + year)
             },
             year,
             month,
@@ -118,6 +118,7 @@ class NuevoGastoFragment : Fragment() {
     }
 
     private fun agregarGasto(concepto: String, monto: String, fecha: String){
+        val eliminado = false
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val documentReference = FirebaseFirestore.getInstance().collection("users").document(userID)
             .collection("gastos")
@@ -126,6 +127,7 @@ class NuevoGastoFragment : Fragment() {
         gasto["concepto"] = concepto
         gasto["monto"] = monto
         gasto["fecha"] = fecha
+        gasto["eliminado"] = eliminado
 
         documentReference.add(gasto)
 

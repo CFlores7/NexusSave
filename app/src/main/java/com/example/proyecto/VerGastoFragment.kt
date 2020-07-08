@@ -49,7 +49,9 @@ class VerGastoFragment : Fragment() {
                     for (document in documents){
                         docID = document.id
                     }
-                    gastosRef.document(docID).delete()
+                    val gasto = HashMap<String, Any>()
+                    gasto["eliminado"] = true
+                    gastosRef.document(docID).update(gasto)
                         .addOnSuccessListener {
                             Toast.makeText(mContext,"¡Gasto eliminado con exito!", Toast.LENGTH_LONG).show()
                         }
