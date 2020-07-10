@@ -89,6 +89,7 @@ class NuevoGastoFragment : Fragment() {
             day
         )
         dpd.datePicker.minDate = (System.currentTimeMillis() - minDay)
+        dpd.datePicker.maxDate = System.currentTimeMillis()
         dpd.show()
     }
 

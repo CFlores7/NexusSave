@@ -104,72 +104,72 @@ class EstadisticasFragment : Fragment() {
                                 yData.add(it.toFloat())
                             }
                         }
-                        for (i in yData.indices) {
-                            yEntrys.add(PieEntry(yData[i],i))
-                        }
-                        for (i in xData.indices) {
-                            xEntrys.add(xData[i])
-                        }
-                        //Create The Data Set
-                        var pieDataSet = PieDataSet(yEntrys, "Estadisticas")
-                        pieDataSet.sliceSpace = 2F
-                        pieDataSet.valueTextSize = 12F
-
-                        //Add color to dataset
-                        val MY_COLORS = intArrayOf(
-                            Color.rgb(0, 126, 214),
-                            Color.rgb(131, 153, 235),
-                            Color.rgb(142, 108, 239),
-                            Color.rgb(156, 70, 208),
-                            Color.rgb(199, 88, 208),
-                            Color.rgb(224, 30, 132),
-                            Color.rgb(255, 0, 0),
-                            Color.rgb(255, 115, 0),
-                            Color.rgb(255, 175, 0),
-                            Color.rgb(255, 236, 0),
-                            Color.rgb(213, 243, 11),
-                            Color.rgb(82, 215, 38),
-                            Color.rgb(27, 170, 47),
-                            Color.rgb(45, 203, 117),
-                            Color.rgb(38, 215, 174),
-                            Color.rgb(124, 221, 221),
-                            Color.rgb(95, 183, 212),
-                            Color.rgb(151, 217, 255)
-                        )
-                        val colors = ArrayList<Int>()
-
-                        for (c in MY_COLORS) colors.add(c)
-
-                        pieDataSet.setColors(colors)
-
-                        //Show selected value in Pie Chart
-                        pieChart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                            override fun onValueSelected(e: Entry?, h: Highlight?) {
-                                if (e == null) return
-
-                                Toast.makeText(
-                                    mContext,
-                                    "Concepto: "+ xData[h?.x!!.toInt()] + "\n Monto: $" + e.y,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            override fun onNothingSelected() {}
-                        })
-
-                        //Add legend to chart
-                        var legend = pieChart.legend
-                        legend.form = Legend.LegendForm.CIRCLE
-
-                        //Create Pie Data Object
-                        val data = PieData(pieDataSet)
-
-                        data.setValueFormatter(PercentFormatter(pieChart))
-
-                        pieChart.data = data
-                        pieChart.setUsePercentValues(true)
-                        pieChart.highlightValue(null)
-                        pieChart.invalidate()
                     }
+                    for (i in yData.indices) {
+                        yEntrys.add(PieEntry(yData[i],i))
+                    }
+                    for (i in xData.indices) {
+                        xEntrys.add(xData[i])
+                    }
+                    //Create The Data Set
+                    var pieDataSet = PieDataSet(yEntrys, "Estadisticas")
+                    pieDataSet.sliceSpace = 2F
+                    pieDataSet.valueTextSize = 12F
+
+                    //Add color to dataset
+                    val MY_COLORS = intArrayOf(
+                        Color.rgb(0, 126, 214),
+                        Color.rgb(131, 153, 235),
+                        Color.rgb(142, 108, 239),
+                        Color.rgb(156, 70, 208),
+                        Color.rgb(199, 88, 208),
+                        Color.rgb(224, 30, 132),
+                        Color.rgb(255, 0, 0),
+                        Color.rgb(255, 115, 0),
+                        Color.rgb(255, 175, 0),
+                        Color.rgb(255, 236, 0),
+                        Color.rgb(213, 243, 11),
+                        Color.rgb(82, 215, 38),
+                        Color.rgb(27, 170, 47),
+                        Color.rgb(45, 203, 117),
+                        Color.rgb(38, 215, 174),
+                        Color.rgb(124, 221, 221),
+                        Color.rgb(95, 183, 212),
+                        Color.rgb(151, 217, 255)
+                    )
+                    val colors = ArrayList<Int>()
+
+                    for (c in MY_COLORS) colors.add(c)
+
+                    pieDataSet.setColors(colors)
+
+                    //Show selected value in Pie Chart
+                    pieChart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
+                        override fun onValueSelected(e: Entry?, h: Highlight?) {
+                            if (e == null) return
+
+                            Toast.makeText(
+                                mContext,
+                                "Concepto: "+ xData[h?.x!!.toInt()] + "\n Monto: $" + e.y,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        override fun onNothingSelected() {}
+                    })
+
+                    //Add legend to chart
+                    var legend = pieChart.legend
+                    legend.form = Legend.LegendForm.CIRCLE
+
+                    //Create Pie Data Object
+                    val data = PieData(pieDataSet)
+
+                    data.setValueFormatter(PercentFormatter(pieChart))
+
+                    pieChart.data = data
+                    pieChart.setUsePercentValues(true)
+                    pieChart.highlightValue(null)
+                    pieChart.invalidate()
                 }
             }
         }
