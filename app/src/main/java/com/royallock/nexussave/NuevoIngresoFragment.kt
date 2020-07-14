@@ -1,4 +1,4 @@
-package com.example.proyecto
+package com.example.nexussave
 
 import android.content.Context
 import android.os.Bundle
@@ -12,12 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import com.example.proyecto.databinding.FragmentNuevoIngresoBinding
+import com.example.nexussave.databinding.FragmentNuevoIngresoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap

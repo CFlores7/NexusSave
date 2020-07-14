@@ -1,21 +1,16 @@
-package com.example.proyecto
+package com.example.nexussave
 
-import android.app.ActionBar
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.proyecto.databinding.FragmentContactoBinding
-import java.util.*
+import com.example.nexussave.databinding.FragmentContactoBinding
 
 
 /**

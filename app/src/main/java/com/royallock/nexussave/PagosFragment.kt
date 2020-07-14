@@ -1,7 +1,6 @@
-package com.example.proyecto
+package com.example.nexussave
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
@@ -14,11 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.allyants.notifyme.NotifyMe
-import com.example.proyecto.databinding.FragmentPagosBinding
+import com.example.nexussave.databinding.FragmentPagosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 import kotlin.collections.ArrayList
 
 

@@ -1,4 +1,4 @@
-package com.example.proyecto
+package com.example.nexussave
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

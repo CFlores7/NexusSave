@@ -1,4 +1,4 @@
-package com.example.proyecto
+package com.example.nexussave
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,8 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import com.example.proyecto.databinding.FragmentLogInBinding
+import com.example.nexussave.databinding.FragmentLogInBinding
 import com.google.firebase.auth.FirebaseAuth
 
 /**

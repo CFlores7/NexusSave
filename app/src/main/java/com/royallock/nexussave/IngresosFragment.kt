@@ -1,34 +1,21 @@
-package com.example.proyecto
+package com.example.nexussave
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
-import android.print.PrintAttributes
-import android.provider.ContactsContract.CommonDataKinds.Note
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginBottom
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.proyecto.databinding.FragmentIngresosBinding
+import com.example.nexussave.databinding.FragmentIngresosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
-import kotlinx.android.synthetic.*
-import org.w3c.dom.Text
-import kotlin.math.round
 
 
 /**

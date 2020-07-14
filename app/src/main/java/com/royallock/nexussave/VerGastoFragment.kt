@@ -1,4 +1,4 @@
-package com.example.proyecto
+package com.example.nexussave
 
 import android.content.Context
 import android.os.Bundle
@@ -12,10 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavArgs
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.proyecto.databinding.FragmentVerIngresoBinding
+import com.example.nexussave.databinding.FragmentVerGastoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.ArrayList
@@ -23,37 +21,38 @@ import java.util.ArrayList
 /**
  * A simple [Fragment] subclass.
  */
-class VerIngresoFragment : Fragment() {
+class VerGastoFragment : Fragment() {
     private val userID = FirebaseAuth.getInstance().currentUser!!.uid
     private val db = FirebaseFirestore.getInstance()
     private val collectionRef = db.collection("users")
-    private val ingresosRef = collectionRef.document(userID).collection("ingresos")
+    private val gastosRef = collectionRef.document(userID).collection("gastos")
     private var mContext: Context? = null
-    val args: VerIngresoFragmentArgs by navArgs()
+    val args: VerGastoFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = "DETALLE INGRESO"
-        val binding = DataBindingUtil.inflate<FragmentVerIngresoBinding>(inflater,
-            R.layout.fragment_ver_ingreso, container, false)
+        (activity as AppCompatActivity).supportActionBar?.title = "DETALLE GASTO"
+
+        val binding = DataBindingUtil.inflate<FragmentVerGastoBinding>(inflater,
+            R.layout.fragment_ver_gasto, container, false)
         val amount = args.concepto
         var docID: String = ""
 
         centerTitle()
 
         binding.btBorrar.setOnClickListener {
-            ingresosRef.whereEqualTo("concepto", amount).get()
+            gastosRef.whereEqualTo("concepto", amount).get()
                 .addOnSuccessListener { documents ->
                     for (document in documents){
                         docID = document.id
                     }
-                    val ingreso = HashMap<String, Any>()
-                    ingreso["eliminado"] = true
-                    ingresosRef.document(docID).update(ingreso)
+                    val gasto = HashMap<String, Any>()
+                    gasto["eliminado"] = true
+                    gastosRef.document(docID).update(gasto)
                         .addOnSuccessListener {
-                            Toast.makeText(mContext,"¡Ingreso eliminado con exito!", Toast.LENGTH_LONG).show()
+                            Toast.makeText(mContext,"¡Gasto eliminado con exito!", Toast.LENGTH_LONG).show()
                         }
                 }
             activity!!.onBackPressed()
@@ -74,7 +73,7 @@ class VerIngresoFragment : Fragment() {
         val amount = args.concepto
         tvCon.text = amount
 
-        ingresosRef.whereEqualTo("concepto", amount)
+        gastosRef.whereEqualTo("concepto", amount)
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     return@addSnapshotListener
@@ -92,8 +91,10 @@ class VerIngresoFragment : Fragment() {
                 }
                 tvCan.text = "$" + cantidad
                 tvFec.text = fecha
-    }
-    }
+
+
+
+    }}
     //Centrar texto en ActionBar
     private fun centerTitle() {
         val textViews = ArrayList<View>()
