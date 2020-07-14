@@ -1,4 +1,4 @@
-package com.example.nexussave
+package com.royallock.nexussave
 
 import android.content.Context
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.nexussave.databinding.FragmentPagosBinding
+import com.royallock.nexussave.databinding.FragmentPagosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.collections.ArrayList

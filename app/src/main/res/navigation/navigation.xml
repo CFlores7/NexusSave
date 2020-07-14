@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.proyecto.HomeFragment"
+        android:name="com.royallock.nexussave.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/ingresosFragment"
-        android:name="com.example.proyecto.IngresosFragment"
+        android:name="com.royallock.nexussave.IngresosFragment"
         android:label="fragment_ingresos"
         tools:layout="@layout/fragment_ingresos" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/nuevoIngresoFragment"
-        android:name="com.example.proyecto.NuevoIngresoFragment"
+        android:name="com.royallock.nexussave.NuevoIngresoFragment"
         android:label="fragment_nuevo_ingreso"
         tools:layout="@layout/fragment_nuevo_ingreso" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/gastosFragment"
-        android:name="com.example.proyecto.GastosFragment"
+        android:name="com.royallock.nexussave.GastosFragment"
         android:label="fragment_gastos"
         tools:layout="@layout/fragment_gastos" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/nuevoGastoFragment"
-        android:name="com.example.proyecto.NuevoGastoFragment"
+        android:name="com.royallock.nexussave.NuevoGastoFragment"
         android:label="fragment_nuevo_gasto"
         tools:layout="@layout/fragment_nuevo_gasto" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/pagosFragment"
-        android:name="com.example.proyecto.PagosFragment"
+        android:name="com.royallock.nexussave.PagosFragment"
         android:label="fragment_pagos"
         tools:layout="@layout/fragment_pagos" >
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/nuevoPagoFragment"
-        android:name="com.example.proyecto.NuevoPagoFragment"
+        android:name="com.royallock.nexussave.NuevoPagoFragment"
         android:label="fragment_nuevo_pago"
         tools:layout="@layout/fragment_nuevo_pago" >
         <action
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="com.example.proyecto.PerfilFragment"
+        android:name="com.royallock.nexussave.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" >
         <argument
@@ -100,12 +100,12 @@
     </fragment>
     <fragment
         android:id="@+id/contactoFragment"
-        android:name="com.example.proyecto.ContactoFragment"
+        android:name="com.royallock.nexussave.ContactoFragment"
         android:label="fragment_contacto"
         tools:layout="@layout/fragment_contacto" />
     <fragment
         android:id="@+id/verIngresoFragment"
-        android:name="com.example.proyecto.VerIngresoFragment"
+        android:name="com.royallock.nexussave.VerIngresoFragment"
         android:label="fragment_ver_ingreso"
         tools:layout="@layout/fragment_ver_ingreso" >
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/verGastoFragment"
-        android:name="com.example.proyecto.VerGastoFragment"
+        android:name="com.royallock.nexussave.VerGastoFragment"
         android:label="fragment_ver_gasto"
         tools:layout="@layout/fragment_ver_gasto" >
         <action
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/verPagoFragment"
-        android:name="com.example.proyecto.VerPagoFragment"
+        android:name="com.royallock.nexussave.VerPagoFragment"
         android:label="fragment_ver_pago"
         tools:layout="@layout/fragment_ver_pago" >
         <action
@@ -144,7 +144,7 @@
     </fragment>
     <fragment
         android:id="@+id/estadisticasFragment"
-        android:name="com.example.proyecto.EstadisticasFragment"
+        android:name="com.royallock.nexussave.EstadisticasFragment"
         android:label="fragment_estadisticas"
         tools:layout="@layout/fragment_estadisticas" />
 </navigation>

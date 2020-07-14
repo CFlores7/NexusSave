@@ -1,4 +1,4 @@
-package com.example.nexussave
+package com.royallock.nexussave
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -12,7 +12,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.nexussave.databinding.FragmentSignUpBinding
+import androidx.navigation.findNavController
+import com.royallock.nexussave.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*

@@ -1,4 +1,4 @@
-package com.example.nexussave
+package com.royallock.nexussave
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.nexussave.databinding.ActivityMainBinding
+import com.royallock.nexussave.databinding.ActivityMainBinding
 
 class ActivityMain : AppCompatActivity() {
 

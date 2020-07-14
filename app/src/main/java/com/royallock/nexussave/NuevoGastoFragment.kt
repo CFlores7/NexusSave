@@ -1,4 +1,4 @@
-package com.example.nexussave
+package com.royallock.nexussave
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import com.example.nexussave.databinding.FragmentNuevoGastoBinding
+import com.royallock.nexussave.databinding.FragmentNuevoGastoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
